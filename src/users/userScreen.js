@@ -3,7 +3,7 @@ import {useHistory} from "react-router-dom"
 import Layout from "../components/Layout/Layout";
 import {Link} from "react-router-dom"
 
-function UserScreen({data}) {
+function UserScreen({data, deleteUser}) {
 const history = useHistory();
 // function handleClick (){
 //   history.push("/Create-User")
@@ -40,9 +40,10 @@ async function edit (){
        <td>{dt.username}</td>
        <td>{dt.company}</td>
        <td>{dt.password}</td>
-       <Link to={`/User/${dt._id}`}>Edit</Link>      
-       <td>{dt.id}</td>
-          
+       <Link to={`/User/${dt._id}`}>Edit</Link>  
+       <td>    
+       <button onClick={()=>deleteUser(dt._id)} >Delete</button>
+       </td>
       
          {/* <td><a><i class="fas fa-edit"></i></a></td>
          <td><a><i class="fas fa-trash-alt"></i></a></td> */}

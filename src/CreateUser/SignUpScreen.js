@@ -25,9 +25,7 @@ function SignUpScreen({error}) {
               <div class="input_field">
                   <Field name="username" type="email" placeholder="Username" />
                 </div>
-                <div class="input_field">
-                  <Field name="company" type="text" placeholder="compnay" />
-                </div>
+                
                 <div class="input_field">
                   <Field
                     name="password"

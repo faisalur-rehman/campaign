@@ -1,4 +1,3 @@
-
 import React, { useState,useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Edit from "./EditScreen"
@@ -19,7 +18,8 @@ function EditForm() {
     
     
     const getUser = useApi(api.Getid);
-    const updateUser=useApi(api.UpdateUser)
+    const UpdateUser=useApi(api.UpdateUser)
+    
 useEffect(() => {
     async function fetchData(){
          try{
@@ -37,25 +37,27 @@ useEffect(() => {
     }
  fetchData();
 }, [])
-
+// console.log(UpdateUser.data)
 
   async function handleSubmit({ formValues }) {
     // console.log("form", formValues);
     try {
-       const {data}= await updateUser.request({ ...formValues,id });
+       const {data}= await api.UpdateUser({ ...formValues,id });
     //   localStorage.setItem("token", data.token);
-    console.log("update",data)
+    console.log("update",data.message)
         //  message=data.message;
     //   history.push("/");
     } catch (_) {}
   }
-//   console.log(data.message)
+
+  console.log(UpdateUser.data)
   return (
     <div>
       <Edit
         handleSubmit={handleSubmit}
         initialValues={initialValues}
-        // updateMessage={UpdateUser.message}
+        updateMessage={UpdateUser.message}
+        
         // error={error}
       />
     </div>

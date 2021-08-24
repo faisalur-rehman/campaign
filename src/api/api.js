@@ -39,3 +39,16 @@ export function CreateCampaign(data) {
   export function UpdateUser(data) {
     return api.put(`/user/update/${data.id}`, { ...data });
   }
+   
+  export function DeleteUser(data) {
+    return api.delete(`/user/delete/${data.id}`, {
+     
+      data: {
+        id: data.id,
+      },
+    });;
+  }
+   
+  export function CreateCompany(data) {
+    return api.post(`/company/create/${data.id}`, { ...data });
+  }

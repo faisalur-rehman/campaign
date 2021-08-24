@@ -1,17 +1,33 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import AppForm from "../AppForm/AppForm";
 import * as api from "../../api/api"
 import useApi from "../../hooks/useApi";
 // import { useHistory } from "react-router";
+const initialValues = {
+  campaignType: "",
+  Thematic: "",
+  StartDate:"",
+  EndDate:"",
+  age:"",
+  Gender:"",
+  Action:""
+
+};
 const CreateCampaign = () => {
+
+
   const history = useHistory();
-  function handleNext() {
+  function handleNext({ formValues }) {
+    console.log("form", formValues);
     history.push("/create-campaign2");
   }
-  // const history = useHistory();
-  
+ 
   return (
+    <AppForm initialValues={initialValues} handleSubmit={handleNext}>
+      {/* <FormFields /> */}
+    </AppForm>,
     <Layout>
       <section class="create_campaign_section" id="create_campaign_page_one">
         <div class="campaign_progress_header">
@@ -31,7 +47,11 @@ const CreateCampaign = () => {
                     Campaign type <span>*</span>
                   </label>
                   <select>
-                    <option></option>
+                    <option>Partenariats</option>
+                    <option>Actions VN</option>
+                    <option>Actions VO</option>
+                    <option>Actions APV</option>
+                    <option>Drivers</option>
                   </select>
                 </div>
                 <div class="single_field">
@@ -49,7 +69,7 @@ const CreateCampaign = () => {
                   <label>
                     Thematic <span>*</span>
                   </label>
-                  <input type="text" />
+                  <input type="text" name="Thematic"/>
                 </div>
                 <div class="single_field">
                   <label>
@@ -74,10 +94,12 @@ const CreateCampaign = () => {
               <div class="input_fields_details">
                 <div class="single_field">
                   <label>
-                    Campaign type <span>*</span>
+                    Add Action <span>*</span>
                   </label>
                   <select>
-                    <option></option>
+                  <option>Action Constructer</option>
+                    <option>Action Concession</option>
+                    
                   </select>
                 </div>
               </div>
@@ -96,6 +118,7 @@ const CreateCampaign = () => {
                   <label>Age</label>
                   <div class="page_one_date_field">
                     <input
+                    name="age"
                       type="number"
                       placeholder="Between 25 and 45 years old"
                     />
