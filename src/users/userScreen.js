@@ -38,7 +38,7 @@ async function edit (){
 
       
        <td>{dt.username}</td>
-       <Link to={`/user-company`}><button >add company<td>{dt._id}</td></button></Link>
+       <Link to={`/user-company/:${dt._id}`}><button >add company<td>{dt._id}</td></button></Link>
        <td>{dt.password}</td> 
        <Link to={`/User/${dt._id}`}>Edit</Link>  
        <td>    
