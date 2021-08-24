@@ -98,9 +98,22 @@ const Sidebar = () => {
               }`}
             >
               <i class="far fa-calendar-alt"></i>
-              <span>User Details  </span>
+              <span>User Details</span>
             </Link>
           </div>
+          <div class="data_container_single_list" onclick="marketing_section()">
+            <Link
+              to="/user-company"
+              onClick={() => handleActive(3)}
+              class={`change_active ${
+                active[3] ? "data_container_single_list_active" : ""
+              }`}
+            >
+              <i class="far fa-calendar-alt"></i>
+              <span>Create Company</span>
+            </Link>
+          </div>
+
         </div>
         <div class="login_user_field">
           <div class="field_operation_btn">

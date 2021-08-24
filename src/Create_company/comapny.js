@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import useApi from "../../hooks/useApi";
-import LoginForm from "./LoginScreen";
-import * as api from "../../api/api"
+import useApi from "../hooks/useApi";
+import * as api from "../api/api";
+import Form from "./companyScreen"
 
 const initialValues = {
 name: "",
@@ -23,7 +23,8 @@ const Company = () => {
 
   return (
     <div>
-      <LoginForm
+      
+          <Form
         handleSubmit={handleSubmit}
         initialValues={initialValues}
         error={error}

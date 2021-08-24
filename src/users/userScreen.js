@@ -38,8 +38,8 @@ async function edit (){
 
       
        <td>{dt.username}</td>
-       <td>{dt.company}</td>
-       <td>{dt.password}</td>
+       <Link to={`/user-company`}><button >add company<td>{dt._id}</td></button></Link>
+       <td>{dt.password}</td> 
        <Link to={`/User/${dt._id}`}>Edit</Link>  
        <td>    
        <button onClick={()=>deleteUser(dt._id)} >Delete</button>

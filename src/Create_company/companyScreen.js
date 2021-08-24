@@ -1,13 +1,13 @@
 import { Field } from "formik";
 import React from "react";
-import AppForm from "../AppForm/AppForm";
-import Layout from "../Layout/Layout";
+import AppForm from "../components/AppForm/AppForm";
+import Layout from "../components/Layout/Layout";
 
 const Form = ({ initialValues, handleSubmit, error }) => {
   // console.log("error", error)
   return (
     <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
-      <CompanyFields error={error} />
+      <CompanyFields/>
     </AppForm>
   );
 };
@@ -21,25 +21,15 @@ function CompanyFields({ error }) {
         <div class="login_container">
           <div class="login_section_form">
             <div class="login_form">
-              <h3>Connectez-vous</h3>
+              <h3>Create Company</h3>
               <div class="login_fields">
                 <div class="input_field">
-                  <Field name="username" type="email" placeholder="Username" />
+                  <Field name="username" type="text" placeholder="Company" />
                 </div>
-                <div class="input_field">
-                  <Field
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                  />
-                </div>
-                <div class="remember_me">
-                  <Field selected={true} type="checkbox" />
-                  <label>Remeber me</label>
-                </div>
-                <p style={{color:"red"}}>{error.data && error.data.message}</p>
+                
+                {/* <p style={{color:"red"}}>{error.data && error.data.message}</p> */}
                 <div class="submit_btn">
-                  <button type="submit">Login</button>
+                  <button type="submit">Create</button>
                 </div>
               </div>
             </div>

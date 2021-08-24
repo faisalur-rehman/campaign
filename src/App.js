@@ -11,6 +11,7 @@ import SignUPForm from "./CreateUser/SignUPForm"
 import UserList from "./users/UserList";
 // import Edit from "./Edit/EditScreen";
 import EditForm from "./Edit/edit";
+import Company from "./Create_company/comapny";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
         </Route>
         <Route path="/User/:id">
           <EditForm/>
+        </Route>
+        <Route path="/user-company">
+          <Company/>
         </Route>
       </Switch>
     </Router>
