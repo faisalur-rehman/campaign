@@ -6,7 +6,7 @@ import * as api from "../api/api"
 import { useParams } from "react-router-dom";
 const initialValues = {
     username: "",
-    company: "",
+
     password: "",
   };
   

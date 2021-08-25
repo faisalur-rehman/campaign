@@ -12,6 +12,8 @@ import UserList from "./users/UserList";
 // import Edit from "./Edit/EditScreen";
 import EditForm from "./Edit/edit";
 import Company from "./Create_company/comapny";
+import FormCampaign from "./components/CreateCampaign/FormCampaign";
+import FormCampaign2 from "./components/CreateCampaign/Formcampaign2";
 
 function App() {
   return (
@@ -24,10 +26,10 @@ function App() {
           <YourCampaigns />
         </Route>
         <Route path="/create-campaign">
-          <CreateCampaign />
+          <FormCampaign />
         </Route>
         <Route path="/create-campaign2">
-          <CreateCampaign2 />
+          <FormCampaign2/>
         </Route>
         <Route path="/create-campaign3">
           <CreateCampaign3 />
@@ -47,7 +49,7 @@ function App() {
         <Route path="/User/:id">
           <EditForm/>
         </Route>
-        <Route path="/user-company">
+        <Route path="/user-company/:id">
           <Company/>
         </Route>
       </Switch>

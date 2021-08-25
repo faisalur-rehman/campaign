@@ -1,33 +1,34 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import AppForm from "../AppForm/AppForm";
 import * as api from "../../api/api"
 import useApi from "../../hooks/useApi";
-// import { useHistory } from "react-router";
-const initialValues = {
-  campaignType: "",
-  Thematic: "",
-  StartDate:"",
-  EndDate:"",
-  age:"",
-  Gender:"",
-  Action:""
+import { Field ,select} from "formik";
+import AppForm from "../AppForm/AppForm";
 
+const initialValues={
+  date:""
+}
+
+// import { useHistory } from "react-router";
+const CampForm = ({ initialValues, handleSubmit}) => {
+  // console.log("error", error)
+  // console.log(initialValues);
+  return (
+    <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
+      <CreateCampaign/>
+    </AppForm>
+  );
 };
+export default CampForm;
+
+
 const CreateCampaign = () => {
 
 
-  const history = useHistory();
-  function handleNext({ formValues }) {
-    console.log("form", formValues);
-    history.push("/create-campaign2");
-  }
- 
+  // const history = useHistory();
+  
   return (
-    <AppForm initialValues={initialValues} handleSubmit={handleNext}>
-      {/* <FormFields /> */}
-    </AppForm>,
     <Layout>
       <section class="create_campaign_section" id="create_campaign_page_one">
         <div class="campaign_progress_header">
@@ -46,37 +47,44 @@ const CreateCampaign = () => {
                   <label>
                     Campaign type <span>*</span>
                   </label>
-                  <select>
-                    <option>Partenariats</option>
-                    <option>Actions VN</option>
-                    <option>Actions VO</option>
-                    <option>Actions APV</option>
-                    <option>Drivers</option>
-                  </select>
+           
+ 
+    <Field
+        name="Campaign" as="select" className="my-select"
+      >
+        <option value="Partenariats" label="Partenariats" />
+        <option value="Action VN" label="Action VN" />
+        <option value="Action Vo" label="Acyion Vo" />
+        <option value="Action VU" label="Action VU" />
+      </Field>
                 </div>
+                
                 <div class="single_field">
+                 
                   <label>
                     Start date <span>*</span>
                   </label>
                   <div class="page_one_date_field">
-                    <input type="date" />
+                    <Field name="startDate" type="date" />
                     <i class="far fa-calendar-alt"></i>
                   </div>
+                 
                 </div>
+                
               </div>
               <div class="input_fields_details">
                 <div class="single_field">
                   <label>
                     Thematic <span>*</span>
                   </label>
-                  <input type="text" name="Thematic"/>
+                  <Field type="text" name="Thematic"/>
                 </div>
                 <div class="single_field">
                   <label>
                     End date <span>*</span>
                   </label>
                   <div class="page_one_date_field">
-                    <input type="date" />
+                    <Field name="EndDate" type="date" />
                     <i class="far fa-calendar-alt"></i>
                   </div>
                 </div>
@@ -96,11 +104,13 @@ const CreateCampaign = () => {
                   <label>
                     Add Action <span>*</span>
                   </label>
-                  <select>
-                  <option>Action Constructer</option>
-                    <option>Action Concession</option>
-                    
-                  </select>
+                  <Field
+        name="Action" as="select" className="my-select"
+      >
+        <option value="Action Constructer" label="Action Constructer" />
+        <option value="Action Concession" label="Action Concession" />
+       
+      </Field>
                 </div>
               </div>
               <div class="input_fields_details">
@@ -108,16 +118,18 @@ const CreateCampaign = () => {
                   <h4>Targeting</h4>
                 </div>
                 <div class="single_field">
-                  <select>
-                    <option selected disabled>
-                      Select your target
-                    </option>
-                  </select>
+                <Field
+                  name="targeting" as="select" className="my-select"
+      >
+        <option value="Clients actifs" label="Clients actifs" />
+        <option value="Clients inactifs" label="Clients inactifs" />
+        <option value="Autres" label="Autres" />
+      </Field>
                 </div>
                 <div class="single_field">
                   <label>Age</label>
                   <div class="page_one_date_field">
-                    <input
+                    <Field
                     name="age"
                       type="number"
                       placeholder="Between 25 and 45 years old"
@@ -127,14 +139,14 @@ const CreateCampaign = () => {
                 <div class="single_field">
                   <label>Gender</label>
                   <div class="page_one_date_field">
-                    <input type="text" />
+                    <Field name="Gender" type="text" />
                   </div>
                 </div>
               </div>
             </form>
             <div class="next_back_button_box">
               <div class="next_back_button">
-                <button onClick={handleNext}>Next</button>
+                <button type="submit">Next</button>
               </div>
             </div>
           </div>
@@ -144,4 +156,4 @@ const CreateCampaign = () => {
   );
 };
 
-export default CreateCampaign;
+// export default CreateCampaign;

@@ -1,7 +1,16 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import { Field ,select} from "formik";
+import AppForm from "../AppForm/AppForm";
 
+const Campform2 = ({initialValues, handleSubmit}) => {
+  return ( <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
+    <CreateCampaign2/>
+  </AppForm> );
+}
+ 
+export default Campform2;
 const CreateCampaign2 = () => {
   const history = useHistory();
   return (
@@ -23,11 +32,18 @@ const CreateCampaign2 = () => {
             <form class="page_one_form_one">
               <div class="input_fields_details">
                 <div class="single_field">
-                  <select>
-                    <option disabled selected>
-                      Select your media
-                    </option>
-                  </select>
+                <Field
+        name={`Media.channel_type`} as="select" className="my-select"
+      >
+        <option label="Select Channle" />
+        <option value="Press" label="Press" />
+        <option value="Radio" label="Radio" />
+        <option value="TV" label="TV" />
+        <option value="Reseaux Sociaux" label="Reseaux Sociaux" />
+        <option value="Emails" label="Emails" />
+        <option value="Sms" label="Sms" />
+       
+      </Field>
                 </div>
               </div>
             </form>
@@ -36,37 +52,37 @@ const CreateCampaign2 = () => {
               <div class="page_two_input_fields_details">
                 <div class="page_two_single_field">
                   <label class="hidden_label">Social networks</label>
-                  <input type="text" placeholder="Social networks" />
+                  <Field name="Network" type="text" placeholder="Social networks" />
                 </div>
                 <div class="page_two_single_field">
                   <label>
                     Cost HT (en €)<span>*</span>
                   </label>
-                  <input type="text" placeholder="500" />
+                  <Field name={ `Media.cost`} type="text" placeholder="500" />
                 </div>
                 <div class="page_two_single_field">
                   <label>
                     Volume<span>*</span>
                   </label>
-                  <input type="text" placeholder="15000" />
+                  <Field name={`Media.Volume`} type="text" placeholder="15000" />
                 </div>
               </div>
               <div class="page_two_input_fields_details">
                 <div class="page_two_single_field">
                   <label class="hidden_label">SMS</label>
-                  <input type="text" placeholder="SMS" />
+                  <Field name ="Sms" type="text" placeholder="SMS" />
                 </div>
                 <div class="page_two_single_field">
                   <label>
                     Cost HT (en €)<span>*</span>
                   </label>
-                  <input type="text" placeholder="200" />
+                  <Field name ="costht2" type="text" placeholder="200" />
                 </div>
                 <div class="page_two_single_field">
                   <label>
                     Volume<span>*</span>
                   </label>
-                  <input type="text" placeholder="5000" />
+                  <Field name="Volume2" type="text" placeholder="5000" />
                 </div>
               </div>
             </form>
@@ -82,7 +98,7 @@ const CreateCampaign2 = () => {
                 <button onClick={() => history.push("/create-campaign")}>
                   Back
                 </button>
-                <button onClick={() => history.push("/create-campaign3")}>
+                <button type="submit">
                   Next
                 </button>
               </div>
@@ -94,4 +110,4 @@ const CreateCampaign2 = () => {
   );
 };
 
-export default CreateCampaign2;
+
