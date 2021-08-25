@@ -16,19 +16,17 @@ function EditScreen({update}) {
     return (
         <div>
             <Layout>
-      <section class="login_section" id="login_section">
-        <div class="login_container">
-          <div class="login_section_form">
-            <div class="login_form">
+      <section className="login_section" id="login_section">
+        <div className="login_container">
+          <div className="login_section_form">
+            <div className="login_form">
               <h3>Edit User</h3>
-              <div class="login_fields">
-              <div class="input_field">
+              <div className="login_fields">
+              <div className="input_field">
                   <Field name="username" type="email" placeholder="Username" />
                 </div>
-                <div class="input_field">
-                  <Field name="company" type="text" placeholder="compnay" />
-                </div>
-                <div class="input_field">
+              
+                <div className="input_field">
                   <Field
                     name="password"
                     type="password"
@@ -42,7 +40,7 @@ function EditScreen({update}) {
                     error.data &&
                     error.data.message}</p> */}
                    <p>{update}</p> 
-                <div class="submit_btn">
+                <div className="submit_btn">
                   <button type="submit">Update</button>
                 </div>
               </div>

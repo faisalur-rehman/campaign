@@ -24,10 +24,10 @@ function CompanyFields({ error }) {
               <h3>Create Company</h3>
               <div class="login_fields">
                 <div class="input_field">
-                  <Field name="username" type="text" placeholder="Company" />
+                  <Field name="name" type="text" placeholder="Company" />
                 </div>
                 
-                {/* <p style={{color:"red"}}>{error.data && error.data.message}</p> */}
+               
                 <div class="submit_btn">
                   <button type="submit">Create</button>
                 </div>

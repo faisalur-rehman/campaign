@@ -15,25 +15,25 @@ const CreateCampaign2 = () => {
   const history = useHistory();
   return (
     <Layout>
-      <section class="create_campaign_section" id="create_campaign_page_two">
-        <div class="campaign_progress_header">
-          <div class="header_logo_part">
+      <section className="create_campaign_section" id="create_campaign_page_two">
+        <div className="campaign_progress_header">
+          <div className="header_logo_part">
             <a>
               <span>Créer une campagne</span>
             </a>
           </div>
         </div>
 
-        <div class="create_campaign_page_one">
-          <div class="create_campaign_page_two_container">
-            <div class="page_two_heading">
+        <div className="create_campaign_page_one">
+          <div className="create_campaign_page_two_container">
+            <div className="page_two_heading">
               <h2>Medias/Channels</h2>
             </div>
-            <form class="page_one_form_one">
-              <div class="input_fields_details">
-                <div class="single_field">
+            <form className="page_one_form_one">
+              <div className="input_fields_details">
+                <div className="single_field">
                 <Field
-        name={`Media.channel_type`} as="select" className="my-select"
+        name={`Media.channel_type`} as="select" classNameName="my-select"
       >
         <option label="Select Channle" />
         <option value="Press" label="Press" />
@@ -48,37 +48,37 @@ const CreateCampaign2 = () => {
               </div>
             </form>
 
-            <form class="page_two_form_two">
-              <div class="page_two_input_fields_details">
-                <div class="page_two_single_field">
-                  <label class="hidden_label">Social networks</label>
+            <form className="page_two_form_two">
+              <div className="page_two_input_fields_details">
+                <div className="page_two_single_field">
+                  <label className="hidden_label">Social networks</label>
                   <Field name="Network" type="text" placeholder="Social networks" />
                 </div>
-                <div class="page_two_single_field">
+                <div className="page_two_single_field">
                   <label>
                     Cost HT (en €)<span>*</span>
                   </label>
                   <Field name={ `Media.cost`} type="text" placeholder="500" />
                 </div>
-                <div class="page_two_single_field">
+                <div className="page_two_single_field">
                   <label>
                     Volume<span>*</span>
                   </label>
                   <Field name={`Media.Volume`} type="text" placeholder="15000" />
                 </div>
               </div>
-              <div class="page_two_input_fields_details">
-                <div class="page_two_single_field">
-                  <label class="hidden_label">SMS</label>
+              <div className="page_two_input_fields_details">
+                <div className="page_two_single_field">
+                  <label className="hidden_label">SMS</label>
                   <Field name ="Sms" type="text" placeholder="SMS" />
                 </div>
-                <div class="page_two_single_field">
+                <div className="page_two_single_field">
                   <label>
                     Cost HT (en €)<span>*</span>
                   </label>
                   <Field name ="costht2" type="text" placeholder="200" />
                 </div>
-                <div class="page_two_single_field">
+                <div className="page_two_single_field">
                   <label>
                     Volume<span>*</span>
                   </label>
@@ -87,14 +87,14 @@ const CreateCampaign2 = () => {
               </div>
             </form>
 
-            <div class="page_two_add_action_btn">
-              <div class="page_two_add_action">
+            <div className="page_two_add_action_btn">
+              <div className="page_two_add_action">
                 <button>Add the action</button>
               </div>
             </div>
 
-            <div class="next_back_button_box">
-              <div class="next_back_button">
+            <div className="next_back_button_box">
+              <div className="next_back_button">
                 <button onClick={() => history.push("/create-campaign")}>
                   Back
                 </button>

@@ -70,3 +70,9 @@
         max-width: 1000px;
         margin: 0px auto;
       }
+
+      .button{
+        color:#232323;
+        align-items: center;
+        justify-content: center;
+      }

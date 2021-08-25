@@ -17,11 +17,9 @@ const UserList = () => {
         async function fetchData() {
         try {
             const { data } = await request.request();
-        //    data = request.data.users
+        // data = request.data.users
             // console.log(data.users)
-          } catch (error) {}
-         
-         
+          } catch (error) {} 
         
     }
     fetchData()

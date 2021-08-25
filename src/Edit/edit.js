@@ -1,18 +1,17 @@
 import React, { useState,useEffect } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import Edit from "./EditScreen"
 import useApi from "../hooks/useApi";
 import * as api from "../api/api"
 import { useParams } from "react-router-dom";
 const initialValues = {
     username: "",
-
     password: "",
   };
   
 function EditForm() {
     const [, setValue] = useState();
-    const history = useHistory();
+    // const history = useHistory();
     const { id } = useParams();
     // console.log(id);
     

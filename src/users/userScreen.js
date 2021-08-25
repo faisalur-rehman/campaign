@@ -2,7 +2,7 @@ import React from 'react'
 import {useHistory} from "react-router-dom"
 import Layout from "../components/Layout/Layout";
 import {Link} from "react-router-dom"
-
+import "./user.css"
 function UserScreen({data, deleteUser}) {
 const history = useHistory();
 // function handleClick (){
@@ -15,12 +15,12 @@ async function edit (){
 }
     return (
         <div>
-            <Layout><section class="purchase_product_history" id="all_product_listing"> 
-    <div class="admin_container">
-          <div class="purchase_product_history_table">
+            <Layout><section className="purchase_product_history" id="all_product_listing"> 
+    <div className="admin_container">
+          <div className="purchase_product_history_table">
          
            <strong>User List:</strong>    
-           <div class="table_wrapper_scroll_x my_custom_scrollbar">     
+           <div className="table_wrapper_scroll_x my_custom_scrollbar">     
      <table>
       <tr>
                   
@@ -38,11 +38,11 @@ async function edit (){
 
       
        <td>{dt.username}</td>
-       <Link to={`/user-company/:${dt._id}`}><button >add company<td>{dt._id}</td></button></Link>
+     <td>  <Link className="button"to={`/user-company/:${dt._id}`}><button>Add Company</button></Link></td>
        <td>{dt.password}</td> 
-       <Link to={`/User/${dt._id}`}>Edit</Link>  
+       <td><Link to={`/User/${dt._id}`}><button className="button">Edit</button></Link></td>  
        <td>    
-       <button onClick={()=>deleteUser(dt._id)} >Delete</button>
+       <button className="button" onClick={()=>deleteUser(dt._id)} >Delete</button>
        </td>
       
          {/* <td><a><i class="fas fa-edit"></i></a></td>

@@ -1,8 +1,8 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import * as api from "../../api/api"
-import useApi from "../../hooks/useApi";
+// import * as api from "../../api/api"
+// import useApi from "../../hooks/useApi";
 import { Field ,select} from "formik";
 import AppForm from "../AppForm/AppForm";
 
@@ -30,27 +30,27 @@ const CreateCampaign = () => {
   
   return (
     <Layout>
-      <section class="create_campaign_section" id="create_campaign_page_one">
-        <div class="campaign_progress_header">
-          <div class="header_logo_part">
+      <section className="create_campaign_section" id="create_campaign_page_one">
+        <div className="campaign_progress_header">
+          <div className="header_logo_part">
             <a>
               <span>Créer une campagne</span>
             </a>
           </div>
         </div>
 
-        <div class="create_campaign_page_one">
-          <div class="create_campaign_container">
-            <form class="page_one_form_one">
-              <div class="input_fields_details">
-                <div class="single_field">
+        <div className="create_campaign_page_one">
+          <div className="create_campaign_container">
+            <form className="page_one_form_one">
+              <div className="input_fields_details">
+                <div className="single_field">
                   <label>
                     Campaign type <span>*</span>
                   </label>
            
  
     <Field
-        name="Campaign" as="select" className="my-select"
+        name="Campaign" as="select" classNameName="my-select"
       >
         <option value="Partenariats" label="Partenariats" />
         <option value="Action VN" label="Action VN" />
@@ -59,48 +59,48 @@ const CreateCampaign = () => {
       </Field>
                 </div>
                 
-                <div class="single_field">
+                <div className="single_field">
                  
                   <label>
                     Start date <span>*</span>
                   </label>
-                  <div class="page_one_date_field">
+                  <div className="page_one_date_field">
                     <Field name="startDate" type="date" />
-                    <i class="far fa-calendar-alt"></i>
+                    <i className="far fa-calendar-alt"></i>
                   </div>
                  
                 </div>
                 
               </div>
-              <div class="input_fields_details">
-                <div class="single_field">
+              <div className="input_fields_details">
+                <div className="single_field">
                   <label>
                     Thematic <span>*</span>
                   </label>
                   <Field type="text" name="Thematic"/>
                 </div>
-                <div class="single_field">
+                <div className="single_field">
                   <label>
                     End date <span>*</span>
                   </label>
-                  <div class="page_one_date_field">
+                  <div className="page_one_date_field">
                     <Field name="EndDate" type="date" />
-                    <i class="far fa-calendar-alt"></i>
+                    <i className="far fa-calendar-alt"></i>
                   </div>
                 </div>
               </div>
             </form>
-            <div class="add_action_section">
-              <div class="form_one_add_action_box">
+            <div className="add_action_section">
+              <div className="form_one_add_action_box">
                 <h2>Add an action</h2>
                 <a>
-                  <i class="fas fa-plus"></i>
+                  <i className="fas fa-plus"></i>
                 </a>
               </div>
             </div>
-            <form class="page_one_form_one">
-              <div class="input_fields_details">
-                <div class="single_field">
+            <form className="page_one_form_one">
+              <div className="input_fields_details">
+                <div className="single_field">
                   <label>
                     Add Action <span>*</span>
                   </label>
@@ -113,22 +113,22 @@ const CreateCampaign = () => {
       </Field>
                 </div>
               </div>
-              <div class="input_fields_details">
-                <div class="target_heading">
+              <div className ="input_fields_details">
+                <div className="target_heading">
                   <h4>Targeting</h4>
                 </div>
-                <div class="single_field">
+                <div className="single_field">
                 <Field
-                  name="targeting" as="select" className="my-select"
+                  name="targeting" as="select" classNameName="my-select"
       >
         <option value="Clients actifs" label="Clients actifs" />
         <option value="Clients inactifs" label="Clients inactifs" />
         <option value="Autres" label="Autres" />
       </Field>
                 </div>
-                <div class="single_field">
+                <div className="single_field">
                   <label>Age</label>
-                  <div class="page_one_date_field">
+                  <div className="page_one_date_field">
                     <Field
                     name="age"
                       type="number"
@@ -136,16 +136,16 @@ const CreateCampaign = () => {
                     />
                   </div>
                 </div>
-                <div class="single_field">
+                <div className="single_field">
                   <label>Gender</label>
-                  <div class="page_one_date_field">
+                  <div className="page_one_date_field">
                     <Field name="Gender" type="text" />
                   </div>
                 </div>
               </div>
             </form>
-            <div class="next_back_button_box">
-              <div class="next_back_button">
+            <div className="next_back_button_box">
+              <div className="next_back_button">
                 <button type="submit">Next</button>
               </div>
             </div>
