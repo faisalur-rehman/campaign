@@ -12,12 +12,13 @@ const Company = () => {
   // const history = useHistory();
     const { error, request } = useApi(api.CreateCompany);
     const { id } = useParams();
-    console.log("id",id)
+    // console.log("id",id)
   async function handleSubmit({ formValues }) {
     console.log("form", formValues);
     try {
       const { data } = await request({ ...formValues,id });
       // localStorage.setItem("token", data.token);
+      console.log("data",data);
     //   history.push("/your-campaigns");
     } catch (_) {}
   }

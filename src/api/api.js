@@ -50,5 +50,6 @@ export function CreateCampaign(data) {
   }
    
   export function CreateCompany(data) {
+    console.log("data",data)
     return api.post(`/company/create/`, { ...data });
   }

@@ -17,7 +17,9 @@ const Login = () => {
     console.log("form", formValues);
     try {
       const { data } = await request({ ...formValues });
+      console.log("Login",data)
       localStorage.setItem("token", data.token);
+      localStorage.setItem("login",JSON.stringify(data));
       history.push("/your-campaigns");
     } catch (_) {}
   }
