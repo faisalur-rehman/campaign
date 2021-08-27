@@ -7,23 +7,31 @@ const api = axios.create({
 const config = {
   headers: {
     Authorization: localStorage.getItem("token"),
+    
   },
+  
 };
-
+console.log("token",config.headers)
 export function loginUser(data) {
   return api.post(`/auth/login`, { ...data });
 }
 
 export function CreateCampaign(data) {
-    return api.post(`/campagin/create-campagin`, { ...data });
+    return api.post(`/campagin/create-campagin`, { ...data },config);
+  }
+
+  export function addAction(data) {
+    // console.log("create",data)
+    return api.post(`/campagin/create-action`, { ...data },config);
   }
 
   export function CreateUser(data) {
     return api.post(`/auth/register`, { ...data });
   }
 
-  export function UserDetails(data) {
-    return api.get(`/user/all`, { ...data });
+  export function UserDetails() {
+    // console.log("object",data)
+    return api.get(`/user/all`, config);
   }
   
    export function GetCampaign(data) {
@@ -51,5 +59,5 @@ export function CreateCampaign(data) {
    
   export function CreateCompany(data) {
     console.log("data",data)
-    return api.post(`/company/create/`, { ...data });
+    return api.post(`/company/create/`, { ...data },config);
   }

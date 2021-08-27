@@ -119,7 +119,7 @@ const CreateCampaign = () => {
                 </div>
                 <div className="single_field">
                 <Field
-                  name="targeting" as="select" classNameName="my-select"
+                  name="target" as="select" classNameName="my-select"
       >
         <option value="Clients actifs" label="Clients actifs" />
         <option value="Clients inactifs" label="Clients inactifs" />

@@ -18,6 +18,7 @@ const Company = () => {
     try {
       const { data } = await request({ ...formValues,id });
       // localStorage.setItem("token", data.token);
+      localStorage.setItem("company",JSON.stringify(data.company._id))
       console.log("data",data);
     //   history.push("/your-campaigns");
     } catch (_) {}

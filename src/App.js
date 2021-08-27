@@ -13,17 +13,27 @@ import EditForm from "./Edit/edit";
 import Company from "./Create_company/comapny";
 import FormCampaign from "./components/CreateCampaign/FormCampaign";
 import FormCampaign2 from "./components/CreateCampaign/Formcampaign2";
+import FormCampaign3 from "./components/CreateCampaign/FormCampaign3";
 
 
 
 function App() {
   const [role, setrole] = useState()
+  const [isLoggedin, setisLoggedin] = useState(true)
   useEffect(() => {
     function Roles (){
       
       const data =JSON.parse(localStorage.getItem("login"));
-      // setrole(data.isAdmin)
-      setrole(data.isAdmin);
+      if(localStorage.getItem("token")){
+        setisLoggedin(false);
+      }
+      else{
+        setisLoggedin(true)
+        setrole(data.isAdmin)
+
+      }
+     
+      // setrole(data.isAdmin);
       console.log("role",data.isAdmin)
       
     }
@@ -31,17 +41,19 @@ function App() {
     Roles();
    
   }, [])
-  console.log("res",role)
-  return (
+  // console.log("res",role)
+  return (  
 
     
       <Router>
-      
-      
-        <>
-        <Route exact path="/">
-        <Login />
-      </Route>
+         {/* <Route exact path="/">
+    <Login />
+  </Route> */}
+        <div>
+    {!isLoggedin?(
+    <div>
+      <p>login</p>
+      <Switch>
       <Route path="/your-campaigns">
         <YourCampaigns />
       </Route>
@@ -52,7 +64,7 @@ function App() {
         <FormCampaign2/>
       </Route>
       <Route path="/create-campaign3">
-        <CreateCampaign3 />
+        <FormCampaign3/>
       </Route>
       <Route path="/create-campaign4">
         <CreateCampaign4 />
@@ -60,24 +72,43 @@ function App() {
       <Route path="/marketing-plan">
         <MarketingPlan />
         </Route>
-      </>
       
-<Switch>
-        <Route path="/Create-User">
-          <SignUPForm/>
-        </Route>
-        <Route path="/User-List">
-          <UserList/>
-        </Route>
-        <Route path="/User/:id">
-          <EditForm/>
-        </Route>
-        <Route path="/user-company/:id">
-          <Company/>
-        </Route>
-      </Switch>
+ 
+     <Route exact path="/">
+        <Login />
+      </Route>
+ <Route path="/Create-User">
+   <SignUPForm/>
+ </Route>
+ <Route path="/User-List">
+   <UserList/>
+ </Route>
+ <Route path="/User/:id">
+   <EditForm/>
+ </Route>
+ <Route path="/user-company/:id">
+   <Company/>
+ </Route>
+</Switch>
+    </div>):(
+    <p>logout\</p>,
+    <Route exact path="/">
+    <Login />
+  </Route>
+  
+ 
+  )}
+  
+      {/* {role?( */}
       
-    </Router>
+        </div>
+      
+
+
+      {/* )} */}
+</Router>        
+      
+
   );
 }
 

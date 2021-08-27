@@ -1,7 +1,17 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { Field ,select} from "formik";  
 import Layout from "../Layout/Layout";
+import AppForm from "../AppForm/AppForm";
 
+const Campform3 = ({initialValues, handleSubmit}) => {
+  return ( <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
+    <CreateCampaign3
+    />
+  </AppForm> );
+}
+ 
+export default Campform3;
 const CreateCampaign3 = () => {
   const history = useHistory();
   return (
@@ -23,16 +33,21 @@ const CreateCampaign3 = () => {
                   <label>
                     Campaign type <span>*</span>
                   </label>
-                  <select>
-                    <option></option>
-                  </select>
+                  <Field
+        name="Campaign_type" as="select" classNameName="my-select"
+      >
+        <option value="Partenariats" label="Partenariats" />
+        <option value="Action VN" label="Action VN" />
+        <option value="Action Vo" label="Acyion Vo" />
+        <option value="Action VU" label="Action VU" />
+      </Field>
                 </div>
                 <div className="single_field">
                   <label>
                     Start date <span>*</span>
                   </label>
                   <div className="page_one_date_field">
-                    <input type="date" />
+                    <Field name="startDate" type="date" />
                     <i className="far fa-calendar-alt"></i>
                   </div>
                 </div>
@@ -42,14 +57,14 @@ const CreateCampaign3 = () => {
                   <label>
                     Thematic <span>*</span>
                   </label>
-                  <input type="text" />
+                  <Field name="Thematic" type="text" />
                 </div>
                 <div className="single_field">
                   <label>
                     End date <span>*</span>
                   </label>
                   <div className="page_one_date_field">
-                    <input type="date" />
+                    <Field name="endDate" type="date" />
                     <i className="far fa-calendar-alt"></i>
                   </div>
                 </div>
@@ -100,7 +115,7 @@ const CreateCampaign3 = () => {
                   <label>
                     Campaign result <span>*</span>
                   </label>
-                  <input type="text" />
+                  <Field name="Campaign_result" type="text" />
                 </div>
               </div>
               <div className="input_fields_details">
@@ -108,7 +123,7 @@ const CreateCampaign3 = () => {
                   <label>
                     Do you recommend the service provider ?<span>*</span>
                   </label>
-                  <textarea></textarea>
+                  <textarea name="recommend"className="text-area"></textarea>
                 </div>
               </div>
             </form>
@@ -118,7 +133,7 @@ const CreateCampaign3 = () => {
                 <button onClick={() => history.push("/create-campaign2")}>
                   Back
                 </button>
-                <button onClick={() => history.push("/create-campaign4")}>
+                <button type="submit">
                   Next
                 </button>
               </div>
@@ -130,4 +145,4 @@ const CreateCampaign3 = () => {
   );
 };
 
-export default CreateCampaign3;
+// export default CreateCampaign3;

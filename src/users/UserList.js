@@ -16,9 +16,10 @@ const UserList = () => {
     useEffect(() => {
         async function fetchData() {
         try {
+        
             const { data } = await request.request();
         // data = request.data.users
-            // console.log(data.users)
+            console.log("userList",data.users)
           } catch (error) {} 
         
     }

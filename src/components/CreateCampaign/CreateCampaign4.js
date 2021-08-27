@@ -1,10 +1,39 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import Layout from "../Layout/Layout";
+import useApi from "../../hooks/useApi";
+import * as api from "../../api/api";
 
 const CreateCampaign4 = () => {
   const history = useHistory();
-      
+  const { error, request } = useApi(api.CreateCampaign);
+
+  async function handleSubmit() {
+    const form3 = JSON.parse(localStorage.getItem("form3"));
+    const form2 = JSON.parse(localStorage.getItem("form2"));   
+    const c_id = JSON.parse(localStorage.getItem("company"));   
+    console.log("form4",form3)
+    console.log("form2",form2._id)
+    const campaign={
+      Campaign_type:form3.Campaign_type,
+       thematic: form3.Thematic,
+       start_date:form3.startDate,
+       end_date:form3.endDate,
+       actions:[
+         
+          form2._id
+         ],
+         company:c_id,
+    }
+  console.log("campaign",campaign)
+    try {
+      const { data } = await request(campaign);
+      console.log("camp",data)
+      // console.log("Login",data.isAdmin)
+      // localStorage.setItem("token", data.token);
+      // localStorage.setItem("login",JSON.stringify(data));
+     } catch (_) {}
+  }
   return (
     <Layout>
       <section className="create_campaign_section" id="create_campaign_page_four">
@@ -122,7 +151,7 @@ const CreateCampaign4 = () => {
                 <button onClick={() => history.push("/create-campaign3")}>
                   Back
                 </button>
-                <button>Create</button>
+                <button  onClick={handleSubmit} >Create</button>
               </div>
             </div>
           </div>

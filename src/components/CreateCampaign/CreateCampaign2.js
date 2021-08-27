@@ -6,7 +6,9 @@ import AppForm from "../AppForm/AppForm";
 
 const Campform2 = ({initialValues, handleSubmit}) => {
   return ( <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
-    <CreateCampaign2/>
+    <CreateCampaign2
+  
+    />
   </AppForm> );
 }
  
@@ -23,17 +25,17 @@ const CreateCampaign2 = () => {
             </a>
           </div>
         </div>
-
+        
         <div className="create_campaign_page_one">
           <div className="create_campaign_page_two_container">
             <div className="page_two_heading">
               <h2>Medias/Channels</h2>
             </div>
-            <form className="page_one_form_one">
+           <form className="page_one_form_one">
               <div className="input_fields_details">
                 <div className="single_field">
-                <Field
-        name={`Media.channel_type`} as="select" classNameName="my-select"
+            <Field
+        name= "channel_type" as="select" classNameName="my-select"
       >
         <option label="Select Channle" />
         <option value="Press" label="Press" />
@@ -44,52 +46,38 @@ const CreateCampaign2 = () => {
         <option value="Sms" label="Sms" />
        
       </Field>
+               
                 </div>
               </div>
             </form>
 
+            
             <form className="page_two_form_two">
               <div className="page_two_input_fields_details">
                 <div className="page_two_single_field">
                   <label className="hidden_label">Social networks</label>
-                  <Field name="Network" type="text" placeholder="Social networks" />
+                  <Field  type="text" placeholder="Social networks" />
                 </div>
                 <div className="page_two_single_field">
                   <label>
                     Cost HT (en €)<span>*</span>
                   </label>
-                  <Field name={ `Media.cost`} type="text" placeholder="500" />
+                  <Field name= "cost" type="text" placeholder="500" />
                 </div>
                 <div className="page_two_single_field">
                   <label>
                     Volume<span>*</span>
                   </label>
-                  <Field name={`Media.Volume`} type="text" placeholder="15000" />
+                  <Field name="Volume1" type="text" placeholder="15000" />
                 </div>
               </div>
               <div className="page_two_input_fields_details">
-                <div className="page_two_single_field">
-                  <label className="hidden_label">SMS</label>
-                  <Field name ="Sms" type="text" placeholder="SMS" />
-                </div>
-                <div className="page_two_single_field">
-                  <label>
-                    Cost HT (en €)<span>*</span>
-                  </label>
-                  <Field name ="costht2" type="text" placeholder="200" />
-                </div>
-                <div className="page_two_single_field">
-                  <label>
-                    Volume<span>*</span>
-                  </label>
-                  <Field name="Volume2" type="text" placeholder="5000" />
-                </div>
               </div>
             </form>
 
             <div className="page_two_add_action_btn">
               <div className="page_two_add_action">
-                <button>Add the action</button>
+                <button type="submit">Add the action</button>
               </div>
             </div>
 
@@ -98,13 +86,14 @@ const CreateCampaign2 = () => {
                 <button onClick={() => history.push("/create-campaign")}>
                   Back
                 </button>
-                <button type="submit">
+                <button >
                   Next
                 </button>
               </div>
             </div>
           </div>
         </div>
+       
       </section>
     </Layout>
   );
