@@ -1,7 +1,9 @@
 import { Field } from "formik";
+// import "./edit.css"
 import React from "react";
 import AppForm from "../components/AppForm/AppForm";
 import Layout from "../components/Layout/Layout";
+import {Link} from "react-router-dom"
 
 const DetailForm = ({ initialValues, handleSubmit, data}) => {
   return (
@@ -22,7 +24,7 @@ function CompanyField({data} ) {
 <div className="admin_container">
   <div className="purchase_product_history_table">
  
-   <strong>User List:</strong>    
+   <strong>Companies List:</strong>    
    <div className="table_wrapper_scroll_x my_custom_scrollbar">     
 <table>
 <tr>
@@ -43,7 +45,7 @@ function CompanyField({data} ) {
 <td>{data.company}</td>
 {/* <td>  <Link className="button"to={`/user-company/:${dt._id}`}><button>+ </button></Link>__{dt.company}</td> */}
 <td>{data.company}</td> 
-{/* <td><Link to={`/User/${dt._id}`}><button className="button">Edit</button></Link></td>   */}
+<td><Link to={`/editCompany/:${data._id}`}><button className="button">Edit</button></Link></td>  
 <td>    
 <button className="button"  >Delete</button>
 </td>

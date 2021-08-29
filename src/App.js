@@ -10,6 +10,7 @@ import SignUPForm from "./CreateUser/SignUPForm";
 import UserList from "./users/UserList";
 // import Edit from "./Edit/EditScreen";
 import EditForm from "./Edit/edit";
+
 import Company from "./Create_company/comapny";
 import FormCampaign from "./components/CreateCampaign/FormCampaign";
 import FormCampaign2 from "./components/CreateCampaign/Formcampaign2";
@@ -18,6 +19,7 @@ import CampForm from "./components/YourCampaigns/campForm";
 import { useHistory } from "react-router-dom";
 import Admin from "./admin";
 import CompanyDetail from "./Create_company/allCompanies";
+import EditCompanyForm from "./Create_company/editCompany";
 
 function App() {
   const history = useHistory();
@@ -63,6 +65,9 @@ function App() {
                 </Route>
                 <Route path="/user-company/:id">
                   <Company />
+                  </Route>
+                  <Route path="/editCompany/:id">
+                  <EditCompanyForm/>
                   </Route>
                 <Route path="/companyDetails">
                   <CompanyDetail />

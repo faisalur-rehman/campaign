@@ -1,24 +1,49 @@
-import React from 'react'
+import React, { useState,useEffect } from "react";
+// import { useHistory } from "react-router-dom";
+// import Edit from "./EditScreen"
+import useApi from "../hooks/useApi";
+import "./edit.css"
 
-function EditCompany() {
-    return (
-        <div>
-         <div id="wrapper">
-  <p><a className="button" href="#popup1">Click Me</a></p>
-	<p><a className="button" href="#popup2">Click Me Too</a></p>
-</div>
+import * as api from "../api/api"
+import { useParams } from "react-router-dom";
+import EditC from "./editScreen";
+const initialValues = {
+        name:"" 
+ };
+  
+function EditCompanyForm() {
+    const [, setValue] = useState();
+    // const history = useHistory();
+    const { id } = useParams();
+   
+    const UpdateCompany=useApi(api.UpdateCompany)
+    
+    // const getUser = useApi(api.Getid);
+    const UpdateUser=useApi(api.UpdateUser)
+ 
+  async function handleSubmit({ formValues }) {
+    // console.log("form", formValues);
+    try {
+       const {data}= await api.UpdateCompany({ ...formValues,id} );;
+    //   localStorage.setItem("token", data.token);
+    console.log("update",data)
+        //  message=data.message;
+    //   history.push("/");
+    } catch (_) {}
+  }
 
-<div id="popup1" className="overlay">
-	<div className="popup">
-		<h2>Info box</h2>
-		<a className="close" href="#">&times;</a>
-		<div className="content">
-			<p>This is done totally without JavaScript. Just HTML and CSS.</p>
-		</div>
-	</div>
-</div>   
-        </div>
-    )
+//   console.log(UpdateUser.data)
+  return (
+    <div>
+      <EditC
+        handleSubmit={handleSubmit}
+        initialValues={initialValues}
+        // updateMessage={UpdateUser.message}
+        
+        // error={error}
+      />
+    </div>
+  );
 }
 
-export default EditCompany
+export default EditCompanyForm;

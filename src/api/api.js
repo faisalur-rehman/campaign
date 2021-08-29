@@ -37,7 +37,15 @@ export function CreateCampaign(data) {
   export function allCompany() {
     // console.log("object",data)
     return api.get(`/company/all`, config);
+
   }
+
+  export function UpdateCompany(data) {
+    return api.post(`/company/update/${data.id}`, { ...data }, config
+     
+     );
+  }
+
    export function GetCampaign(data) {
      console.log('get ',data);
     return api.post(`campagin/get-campagin `, {company:data }, config);
