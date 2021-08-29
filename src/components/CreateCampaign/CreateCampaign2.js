@@ -56,7 +56,7 @@ const CreateCampaign2 = () => {
               <div className="page_two_input_fields_details">
                 <div className="page_two_single_field">
                   <label className="hidden_label">Social networks</label>
-                  <Field  type="text" placeholder="Social networks" />
+                  <Field name="sms" type="text" placeholder="Social networks" />
                 </div>
                 <div className="page_two_single_field">
                   <label>

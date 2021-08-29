@@ -5,6 +5,7 @@ import * as api from "../../api/api";
 import Campform2 from "./CreateCampaign2";
 const initialValues2 = {
   // Network:"",
+  sms:"",
       channel_type: "", Volume1: "", cost: "" 
   };
 
@@ -40,7 +41,7 @@ const FormCampaign2 = () => {
     history.push("/create-campaign3");
     // console.log("form2", formValues);
     
-    
+     localStorage.setItem("form21", JSON.stringify(formValues));
     //  console.log("Media",Media)
     const form =JSON.parse(localStorage.getItem("form1"));
     const action=form.formValues.Action;

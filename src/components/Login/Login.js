@@ -12,22 +12,24 @@ const initialValues = {
 const Login = () => {
   const history = useHistory();
     const { error, request } = useApi(api.loginUser);
-
   async function handleSubmit({ formValues }) {
     console.log("form", formValues);
     try {
       const { data } = await request({ ...formValues });
-      console.log("Login",data.isAdmin)
+      // console.log("Login",data.isAdmin)
       localStorage.setItem("token", data.token);
       localStorage.setItem("login",JSON.stringify(data));
-    if(data.isAdmin){
+     
+    if(data.isAdmin===true){
       history.push("/User-List");
     }
+  
     else{
-      history.push("/your-campaigns");
+      history.push("/create-campaign");
     }
+    // history.push("/create-campaign");
     window.location.reload()
-    history.push("/your-campaigns");
+    
 
     } catch (_) {}
   }

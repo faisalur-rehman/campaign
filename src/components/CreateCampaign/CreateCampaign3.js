@@ -71,7 +71,7 @@ const CreateCampaign3 = () => {
               </div>
             </form>
 
-            <div className="page_two_action_list">
+            {/* <div className="page_two_action_list">
               <div className="page_two_action_list_heading">
                 <span>Action 1</span>
                 <p>
@@ -99,7 +99,7 @@ const CreateCampaign3 = () => {
                   <p>15000</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="add_action_section">
               <div className="form_one_add_action_box">

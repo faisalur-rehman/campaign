@@ -1,7 +1,36 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import Layout from "../Layout/Layout";
-
+import useApi from "../../hooks/useApi";
+import * as api from "../../api/api"
 const MarketingPlan = () => {
+const [company, setcompany] = useState()
+const [year, setyear] = useState()
+   const request = useApi(api.allCompany)
+   const marketing=useApi(api.marketingPlan)
+     useEffect(() => {
+     
+        async function fetchData() {
+        try {
+            const { data } = await request.request();
+                const { data2 } = await marketing.request({company,year});
+            
+          } catch (error) {}  
+    }
+    fetchData()
+    }, [company])
+    console.log(marketing.data)
+    function handleYearChange(e){
+      e.preventDefault();
+      setyear(e.target.value)
+      console.log(e.target.value)
+    }
+     function handleChange(e){
+      e.preventDefault();
+      
+      setcompany(e.target.value);
+      console.log("company",company);
+    
+    } 
   return (
     <Layout>
       <section
@@ -17,9 +46,15 @@ const MarketingPlan = () => {
           <div className="marketing_list_download">
             <a>
               <span>Dealership</span>
-              <select>
-                <option>Audi France</option>
-              </select>
+              <select
+                onChange={handleChange}
+      >
+        {request.data && request.data.map((data,index)=>(
+        <option value={data.company} label={data.company} />
+        ))}
+        
+      </select>
+      {company}
             </a>
             <button>
               <i className="fas fa-download"></i>
@@ -32,9 +67,13 @@ const MarketingPlan = () => {
               <div className="marketing_page_excel_sheet_main">
                 <div className="marketing_page_excel_data">
                   <div className="marketing_page_year_box">
-                    <select>
-                      <option>2021</option>
+                    <select onChange={handleYearChange}>
+                      <option disabled value="">Select</option>
+                      <option value="2021">2021</option>
+                      <option value="2021">2021</option>
+                    
                     </select>
+                    {year}
                   </div>
                   <div className="marketing_page_properties_box">
                     <p>Partenariats</p>

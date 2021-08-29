@@ -7,13 +7,18 @@ import * as api from "../../api/api";
 const CreateCampaign4 = () => {
   const history = useHistory();
   const { error, request } = useApi(api.CreateCampaign);
-
+ const form3 = JSON.parse(localStorage.getItem("form3"));
+   const form2 = JSON.parse(localStorage.getItem("form2")); 
+   const form21 = JSON.parse(localStorage.getItem("form21")); 
+   const form1 = JSON.parse(localStorage.getItem("form1")); 
   async function handleSubmit() {
-    const form3 = JSON.parse(localStorage.getItem("form3"));
-    const form2 = JSON.parse(localStorage.getItem("form2"));   
+   
+  
+      
     const c_id = JSON.parse(localStorage.getItem("company"));   
-    console.log("form4",form3)
-    console.log("form2",form2._id)
+   
+    
+    console.log("form2",form2.channels[0]._id)
     const campaign={
       Campaign_type:form3.Campaign_type,
        thematic: form3.Thematic,
@@ -21,11 +26,12 @@ const CreateCampaign4 = () => {
        end_date:form3.endDate,
        actions:[
          
-          form2._id
+        form2._id
          ],
          company:c_id,
     }
   console.log("campaign",campaign)
+   console.log("form4",form2)
     try {
       const { data } = await request(campaign);
       console.log("camp",data)
@@ -33,9 +39,11 @@ const CreateCampaign4 = () => {
       // localStorage.setItem("token", data.token);
       // localStorage.setItem("login",JSON.stringify(data));
      } catch (_) {}
+  // window.reload()
   }
   return (
     <Layout>
+                     
       <section className="create_campaign_section" id="create_campaign_page_four">
         <div className="campaign_progress_header">
           <div className="header_logo_part">
@@ -55,13 +63,15 @@ const CreateCampaign4 = () => {
                 <div className="page_four_single_field">
                   <a></a>
                   <span>
-                    Type de campagne :<span>Partenariat</span>
+                    Type de campagne :<span>{form3.Campaign_type}</span>
                   </span>
                 </div>
                 <div className="page_four_single_field">
                   <a></a>
+                  
                   <span>
-                    Type d'action :<span> Action Concession</span>
+                  
+                    Type d'action :<span></span>
                   </span>
                 </div>
               </div>
@@ -69,29 +79,31 @@ const CreateCampaign4 = () => {
                 <div className="page_four_single_field">
                   <a></a>
                   <span>
-                    Thematic :<span>OV of the week</span>
+                    Thematic :<span>{form3.Thematic}</span>
                   </span>
                 </div>
                 <div className="page_four_single_field">
                   <a></a>
                   <span>
-                    Start Date :<span></span>
+                    Start Date :<span>{form3.startDate}</span>
                   </span>
                 </div>
                 <div className="page_four_single_field">
                   <a></a>
                   <span>
-                    End Date :<span></span>
+                    End Date :<span>{form3.endDate}</span>
                   </span>
                 </div>
               </div>
             </form>
+ 
+                    
 
             <div className="page_two_action_list">
               <div className="page_two_action_list_heading">
                 <span>Action 1</span>
                 <p>
-                  Type d'action <small> Action Concession</small>
+                  Type d'action <small> Action Concessio</small>
                 </p>
                 <a>
                   <i className="fas fa-ellipsis-h"></i>
@@ -100,15 +112,19 @@ const CreateCampaign4 = () => {
               <div className="page_two_action_detail">
                 <div className="page_two_action_detail_data">
                   <span>Targeting</span>
-                  <p>Between 25 and 35 years old</p>
+                  <p>{form1.formValues.target}//{form1.formValuesage}</p>
                 </div>
                 <div className="page_two_action_detail_data">
-                  <span>Medias/Channels</span>
-                  <p>SMS</p>
+                  <span>channel-type</span>
+                  <p>{form21.channel_type}</p>
                 </div>
                 <div className="page_two_action_detail_data">
-                  <span>Cost</span>
-                  <p>500</p>
+                  <span>sms</span>
+                  <p>{form21.sms}</p>
+                </div>
+                <div className="page_two_action_detail_data">
+                  <span>cost</span>
+                  <p>{form21.cost}</p>
                 </div>
                 <div className="page_two_action_detail_data">
                   <span>Volume</span>
@@ -116,7 +132,6 @@ const CreateCampaign4 = () => {
                 </div>
               </div>
             </div>
-
             <div className="page_two_action_list">
               <div className="page_two_action_list_heading">
                 <span>Action 1</span>

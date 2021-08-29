@@ -17,7 +17,7 @@ export function loginUser(data) {
 }
 
 export function CreateCampaign(data) {
-    return api.post(`/campagin/create-campagin`, { ...data },config);
+    return api.post(`/campagin/create-campagin`, { ...data }, config);
   }
 
   export function addAction(data) {
@@ -34,22 +34,41 @@ export function CreateCampaign(data) {
     return api.get(`/user/all`, config);
   }
   
+  export function allCompany() {
+    // console.log("object",data)
+    return api.get(`/company/all`, config);
+  }
    export function GetCampaign(data) {
-    return api.get(`campagin/get-campagin `, { ...data });
+     console.log('get ',data);
+    return api.post(`campagin/get-campagin `, {company:data }, config);
   }
   
+  export function getCampaignByid(data) {
+    // console.log("data",data);
+    return api.get(`/campagin/detail/${data.id}`, config);
+  }
   
   export function Getid(data) {
     // console.log("data",data);
-    return api.get(`/user/${data.id} `, { ...data });
+    return api.get(`/user/${data.id}`, config);
+  }
+  
+  export function marketingPlan(data) {
+    // console.log("data",data);
+    return api.post(`/campagin/marketing-plan`, {...data}, config);
   }
   
   export function UpdateUser(data) {
-    return api.put(`/user/update/${data.id}`, { ...data });
+    return api.put(`/user/update/${data.id}`, { ...data }, config,{
+     
+      data: {
+        id: data.id,
+      },
+    });
   }
    
   export function DeleteUser(data) {
-    return api.delete(`/user/delete/${data.id}`, {
+    return api.delete(`/user/delete/${data.id}`, config, {
      
       data: {
         id: data.id,
