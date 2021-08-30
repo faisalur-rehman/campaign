@@ -24,7 +24,7 @@ function EditCompanyForm() {
   async function handleSubmit({ formValues }) {
     // console.log("form", formValues);
     try {
-       const {data}= await api.UpdateCompany({ ...formValues,id} );;
+       const {data}= await UpdateCompany.request({ ...formValues,id} );;
     //   localStorage.setItem("token", data.token);
     console.log("update",data)
         //  message=data.message;

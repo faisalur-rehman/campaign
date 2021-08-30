@@ -41,7 +41,13 @@ export function CreateCampaign(data) {
   }
 
   export function UpdateCompany(data) {
-    return api.post(`/company/update/${data.id}`, { ...data }, config
+    return api.post(`/company/update/${data.id}`, { ...data }, config,
+    {
+     
+      data: {
+        id: data.id,
+      },
+    }
      
      );
   }

@@ -27,7 +27,6 @@ const Login = () => {
     else{
       history.push("/create-campaign");
     }
-    // history.push("/create-campaign");
     window.location.reload()
     
 

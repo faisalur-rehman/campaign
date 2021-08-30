@@ -2,6 +2,8 @@ import React,{useEffect,useState} from "react";
 import Layout from "../Layout/Layout";
 import useApi from "../../hooks/useApi";
 import * as api from "../../api/api"
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const MarketingPlan = () => {
 const [company, setcompany] = useState()
 const [year, setyear] = useState()
@@ -112,7 +114,7 @@ const [year, setyear] = useState()
                         <h3>Advertising on radio</h3>
                         <span>result: </span>
                         <a>
-                          <i className="fas fa-plus"></i>
+                          <button ><FontAwesomeIcon icon={faPlus} /></button>
                         </a>
                       </div>
                     </div>

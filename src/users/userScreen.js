@@ -2,6 +2,8 @@ import React from 'react'
 import {useHistory} from "react-router-dom"
 import Layout from "../components/Layout/Layout";
 import {Link} from "react-router-dom"
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./user.css"
 function UserScreen({data, deleteUser}) {
 const history = useHistory();
@@ -40,9 +42,9 @@ async function edit (){
        <td>{dt.username}</td>
      <td>  <Link className="button"to={`/user-company/:${dt._id}`}><button>+ </button></Link>__{dt.company}</td>
        <td>{dt.password}</td> 
-       <td><Link to={`/User/${dt._id}`}><button className="button">Edit</button></Link></td>  
+       <td><Link to={`/User/${dt._id}`}><button className="button">Edit<FontAwesomeIcon icon={faPlus} /></button></Link></td>  
        <td>    
-       <button className="button" onClick={()=>deleteUser(dt._id)} >Delete</button>
+       <button className="button" onClick={()=>deleteUser(dt._id)} ><FontAwesomeIcon icon={faPlus} />Delete</button>
        </td>
       
          {/* <td><a><i class="fas fa-edit"></i></a></td>

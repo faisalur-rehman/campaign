@@ -5,26 +5,32 @@ import { useHistory } from "react-router-dom";
 const Sidebar = () => {
   const history = useHistory();
   const [role, setrole] = useState();
-  const [isLoggedin, setisLoggedin] = useState(false);
-  const data = JSON.parse(localStorage.getItem("login"));
-  useEffect(() => {
-    function Roles() {
-      // data.isAdmin=false;
-      setrole(localStorage.getItem("role"));
-      if (localStorage.getItem("token")) {
-        setisLoggedin(false);
-      } else {
-        setisLoggedin(true);
-      }
-    }
+  const [isLoggedin, setisLoggedin] = useState();
+  
 
-    Roles();
-  }, [data.isAdmin]);
+  const data = JSON.parse(localStorage.getItem("login"))
+  const token =localStorage.getItem("token")
+  // useEffect(() => {
+  //   function Roles() {
+      
+  //   }
+
+  //   Roles();
+  // }, [data.isAdmin]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token")
+    if (token) {
+      setisLoggedin(true)
+    } else {
+      setisLoggedin(false)
+    }
+  }, []) 
 
   function handleLogout() {
     localStorage.removeItem("token");
+    localStorage.removeItem("login")
     setisLoggedin(false);
-    //  localStorage.removeItem("login");
 
     history.push("/");
     window.location.reload();
@@ -36,11 +42,15 @@ const Sidebar = () => {
     setActive([...arr]);
   }
   console.log("active", active);
+
+  if (!isLoggedin) {
+    console.log("not logged in ..")
+    return <p>Not Logged In</p>
+  }
+
   return (
-    // <section classNameName="admin_pannel">
     <div>
-      {/* {!role?( */}
-      {!isLoggedin ? (
+      {isLoggedin ? (
         <div>
           <div className="admin_pannel_dashnboard responsive_nav_bar">
             <div className="dashnboard_data_container">

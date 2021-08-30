@@ -8,9 +8,7 @@ import CreateCampaign4 from "./components/CreateCampaign/CreateCampaign4";
 import MarketingPlan from "./components/MarketingPlan/MarketingPlan";
 import SignUPForm from "./CreateUser/SignUPForm";
 import UserList from "./users/UserList";
-// import Edit from "./Edit/EditScreen";
 import EditForm from "./Edit/edit";
-
 import Company from "./Create_company/comapny";
 import FormCampaign from "./components/CreateCampaign/FormCampaign";
 import FormCampaign2 from "./components/CreateCampaign/Formcampaign2";
@@ -20,40 +18,58 @@ import { useHistory } from "react-router-dom";
 import Admin from "./admin";
 import CompanyDetail from "./Create_company/allCompanies";
 import EditCompanyForm from "./Create_company/editCompany";
+import ProtectedRoute from "./protected-route";
+
+
 
 function App() {
   const history = useHistory();
   const [role, setrole] = useState();
-  const [isLoggedin, setisLoggedin] = useState(true);
+  const [isLoggedin, setisLoggedin] = useState();
   const data = JSON.parse(localStorage.getItem("login"));
-  useEffect(() => {
-    function Roles() {
-     
-      if (localStorage.getItem("token")) {
-        setisLoggedin(false);
-        
-      } else {
-        setisLoggedin(true);
-        // setrole(data.isAdmin);
-      }
-      // if ((data.isAdmin = true)) {
-      //   setrole(true);
-      // } else {
-      //   setrole(false);
-      // }
-      
-    }
+  const token = localStorage.getItem("token");
 
-    Roles();
-  }, [data.isAdmin]);
-  
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+
+  //   if (token) {
+  //     console.log("token found");
+  //     setisLoggedin(true);
+  //   } else {
+  //     console.log("token not found");
+  //     setisLoggedin(false);
+  //   }
+  // }, []);
+
   return (
     <Router>
-      
+      <Switch>
+        <ProtectedRoute exact path="/" component={Login} />
+        <ProtectedRoute isAuth  path="/marketing-plan" component={MarketingPlan} />
+        <ProtectedRoute isAuth  path="/create-campaign" component={FormCampaign } />
+        <ProtectedRoute isAuth  path="/create-campaign2" component={FormCampaign2  } />
+        <ProtectedRoute isAuth  path="/create-campaign3" component={FormCampaign3 } />
+        <ProtectedRoute isAuth  path="/create-campaign4" component={CreateCampaign4 } />
+
+
+
+      </Switch>
+    </Router>
+  )
+
+  if (isLoggedin) {
+    return <p>Logged In</p>
+  } else {
+    return <p>Not Logged In</p>
+  }
+
+  return (
+    <Router>
       <div>
-        {!isLoggedin ? (
+        {isLoggedin ? (
           <div>
-           {data.isAdmin===true?( <Switch>
+            {data.isAdmin === true ? (
+              <Switch>
                 <Route path="/Create-User">
                   <SignUPForm />
                 </Route>
@@ -65,14 +81,16 @@ function App() {
                 </Route>
                 <Route path="/user-company/:id">
                   <Company />
-                  </Route>
-                  <Route path="/editCompany/:id">
-                  <EditCompanyForm/>
-                  </Route>
+                </Route>
+                <Route path="/editCompany/:id">
+                  <EditCompanyForm />
+                </Route>
                 <Route path="/companyDetails">
                   <CompanyDetail />
                 </Route>
-              </Switch>):( <Switch>
+              </Switch>
+            ) : (
+              <Switch>
                 <Route path="/your-campaigns">
                   <CampForm />
                 </Route>
@@ -91,20 +109,15 @@ function App() {
                 <Route path="/marketing-plan">
                   <MarketingPlan />
                 </Route>
-              </Switch>)}
-            
-              
-            
-             
+              </Switch>
+            )}
           </div>
         ) : (
           <Route path="/">
             <Login />
-            </Route>
+          </Route>
         )}
-
       </div>
-
     </Router>
   );
 }
