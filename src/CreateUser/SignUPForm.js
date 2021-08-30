@@ -13,7 +13,7 @@ const initialValues = {
 function SignUPForm() {
   const { id } = useParams();  
     const history = useHistory();
-    const { error, request } = useApi(api.CreateUser);
+    const { error, request,data } = useApi(api.CreateUser);
 
   async function handleSubmit({ formValues }) {
     alert(id);
@@ -21,7 +21,6 @@ function SignUPForm() {
     try {
       const { data } = await request({ ...formValues });
       localStorage.setItem("token", data.token);
-      history.push("/");
     } catch (_) {}
   }
 
@@ -31,6 +30,7 @@ function SignUPForm() {
         handleSubmit={handleSubmit}
         initialValues={initialValues}
         error={error}
+        data={data}
       />
     </div>
   );

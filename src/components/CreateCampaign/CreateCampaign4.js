@@ -7,44 +7,48 @@ import * as api from "../../api/api";
 const CreateCampaign4 = () => {
   const history = useHistory();
   const { error, request } = useApi(api.CreateCampaign);
- const form3 = JSON.parse(localStorage.getItem("form3"));
-   const form2 = JSON.parse(localStorage.getItem("form2")); 
-   const form21 = JSON.parse(localStorage.getItem("form21")); 
-   const form1 = JSON.parse(localStorage.getItem("form1")); 
+  const form3 = JSON.parse(localStorage.getItem("form3"));
+  const form2 = JSON.parse(localStorage.getItem("form2"));
+  const form21 = JSON.parse(localStorage.getItem("form21"));
+  const form1 = JSON.parse(localStorage.getItem("form1"));
   async function handleSubmit() {
-   
-  
-      
-    const c_id = JSON.parse(localStorage.getItem("company"));   
-   
-    
-    console.log("form2",form2.channels[0]._id)
-    const campaign={
-      Campaign_type:form3.Campaign_type,
-       thematic: form3.Thematic,
-       start_date:form3.startDate,
-       end_date:form3.endDate,
-       actions:[
-         
-        form2._id
-         ],
-         company:c_id,
-    }
-  console.log("campaign",campaign)
-   console.log("form4",form2)
+    const c_id = JSON.parse(localStorage.getItem("company"));
+
+    // console.log("form2", form2.channels[0]._id);
+    const campaign = {
+      campaignType: form3.Campaign_type,
+      thematic: form3.Thematic,
+      startDate: form3.startDate,
+      endDate: form3.endDate,
+      actions: [
+        {
+          actionType: form1.formValues.Action,
+          target:form1.formValues.target,
+          age:form1.formValues.age,
+          gender:form1.formValues.Gender,
+          channelType: form21.channel_type,
+          channelCost: form21.cost,
+          channelVolume:form21.Volume1
+        },
+      ],
+    };
+    console.log("campaign", campaign);
+    console.log("form4", form2);
     try {
       const { data } = await request(campaign);
-      console.log("camp",data)
+      console.log("camp", data);
       // console.log("Login",data.isAdmin)
       // localStorage.setItem("token", data.token);
       // localStorage.setItem("login",JSON.stringify(data));
-     } catch (_) {}
-  // window.reload()
+    } catch (_) {}
+    // window.reload()
   }
   return (
     <Layout>
-                     
-      <section className="create_campaign_section" id="create_campaign_page_four">
+      <section
+        className="create_campaign_section"
+        id="create_campaign_page_four"
+      >
         <div className="campaign_progress_header">
           <div className="header_logo_part">
             <a>
@@ -64,15 +68,14 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     Type de campagne :<span>
-                      {form3.Campaign_type}
+                      {/* {form3.Campaign_type} */}
                       </span>
                   </span>
                 </div>
                 <div className="page_four_single_field">
                   <a></a>
-                  
+
                   <span>
-                  
                     Type d'action :<span></span>
                   </span>
                 </div>
@@ -82,7 +85,7 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     Thematic :<span>
-                      {form3.Thematic}
+                      {/* {form3.Thematic} */}
                       </span>
                   </span>
                 </div>
@@ -90,7 +93,7 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     Start Date :<span>
-                      {form3.startDate}
+                      {/* {form3.startDate} */}
                       </span>
                   </span>
                 </div>
@@ -98,14 +101,12 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     End Date :<span>
-                      {form3.endDate}
+                      {/* {form3.endDate} */}
                       </span>
                   </span>
                 </div>
               </div>
             </form>
- 
-                    
 
             <div className="page_two_action_list">
               <div className="page_two_action_list_heading">
@@ -120,7 +121,9 @@ const CreateCampaign4 = () => {
               <div className="page_two_action_detail">
                 <div className="page_two_action_detail_data">
                   <span>Targeting</span>
-                  <p>{form1.formValues.target}//{form1.formValuesage}</p>
+                  <p>
+                    {form1.formValues.target}//{form1.formValuesage}
+                  </p>
                 </div>
                 <div className="page_two_action_detail_data">
                   <span>channel-type</span>
@@ -174,7 +177,7 @@ const CreateCampaign4 = () => {
                 <button onClick={() => history.push("/create-campaign3")}>
                   Back
                 </button>
-                <button  onClick={handleSubmit} >Create</button>
+                <button onClick={handleSubmit}>Create</button>
               </div>
             </div>
           </div>

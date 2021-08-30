@@ -7,32 +7,42 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const MarketingPlan = () => {
 const [company, setcompany] = useState()
 const [year, setyear] = useState()
-   const request = useApi(api.allCompany)
+   const request = useApi(api.getuserCompany)
    const marketing=useApi(api.marketingPlan)
      useEffect(() => {
      
         async function fetchData() {
         try {
             const { data } = await request.request();
-                const { data2 } = await marketing.request({company,year});
+            console.log("company",data)
+                // const { data2 } = await marketing.request({company,year});
             
           } catch (error) {}  
     }
     fetchData()
-    }, [company])
-    console.log(marketing.data)
-    function handleYearChange(e){
+    }, [])
+    
+    // console.log(marketing.data)
+    async function handleYearChange(e){
       e.preventDefault();
       setyear(e.target.value)
-      console.log(e.target.value)
+      try {
+        // console.log("company",data)
+            const { data } = await marketing.request({companyId:request.data.company._id,year:e.target.value});
+           
+        
+      } catch (error) {}  
+      // console.log(e.target.value)
     }
      function handleChange(e){
       e.preventDefault();
       
       setcompany(e.target.value);
-      console.log("company",company);
+      // console.log("company",company);
     
     } 
+
+    console.log('marketing plan',marketing.data);
   return (
     <Layout>
       <section
@@ -51,9 +61,9 @@ const [year, setyear] = useState()
               <select
                 onChange={handleChange}
       >
-        {request.data && request.data.map((data,index)=>(
+        {/* {request.data && request.data.map((data,index)=>(
         <option value={data.company} label={data.company} />
-        ))}
+        ))} */}
         
       </select>
       {company}
@@ -77,9 +87,12 @@ const [year, setyear] = useState()
                     </select>
                     {year}
                   </div>
-                  <div className="marketing_page_properties_box">
-                    <p>Partenariats</p>
+                  {marketing.data && marketing.data.map(data=>(
+                    <div className="marketing_page_properties_box">
+                    <p>{data.campaignType}</p>
                   </div>
+                  ))}
+                  
                   <div className="marketing_page_properties_box">
                     <p>Partenariats</p>
                   </div>

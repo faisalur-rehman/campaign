@@ -43,10 +43,10 @@ const Sidebar = () => {
   }
   console.log("active", active);
 
-  if (!isLoggedin) {
-    console.log("not logged in ..")
-    return <p>Not Logged In</p>
-  }
+  // if (!isLoggedin) {
+  //   console.log("not logged in ..")
+  //   return <p>Not Logged In</p>
+  // }
 
   return (
     <div>

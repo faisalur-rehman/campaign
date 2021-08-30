@@ -3,16 +3,16 @@ import React from "react";
 import AppForm from "../components/AppForm/AppForm";
 import Layout from "../components/Layout/Layout";
 
-const SignUp = ({ initialValues, handleSubmit, error }) => {
+const SignUp = ({ initialValues, handleSubmit, error,data }) => {
     // console.log("error", error)
     return (
       <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
-    <SignUpScreen error = {error} />
+    <SignUpScreen error = {error} data={data}/>
       </AppForm>
     );
   };
   export default SignUp;
-function SignUpScreen({error}) {
+function SignUpScreen({error,data}) {
     return (
         <div>
             <Layout>
@@ -39,6 +39,7 @@ function SignUpScreen({error}) {
                     {
                     error.data &&
                     error.data.message}</p>
+                {data && <p style={{color:'green'}}>User Created Successfully.</p>}
                 <div class="submit_btn">
                   <button type="submit">Create</button>
                 </div>

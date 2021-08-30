@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/",
+  baseURL: "https://campaign-tool-restapi.herokuapp.com/",
 });
 
 const config = {
@@ -17,7 +17,7 @@ export function loginUser(data) {
 }
 
 export function CreateCampaign(data) {
-    return api.post(`/campagin/create-campagin`, { ...data }, config);
+    return api.post(`/campaign/add`, { ...data }, config);
   }
 
   export function addAction(data) {
@@ -34,6 +34,10 @@ export function CreateCampaign(data) {
     return api.get(`/user/all`, config);
   }
   
+  export function getuserCompany() {
+    // console.log("object",data)
+    return api.get(`/campaign/get-user-company`, config);
+  }
   export function allCompany() {
     // console.log("object",data)
     return api.get(`/company/all`, config);
@@ -69,7 +73,7 @@ export function CreateCampaign(data) {
   
   export function marketingPlan(data) {
     // console.log("data",data);
-    return api.post(`/campagin/marketing-plan`, {...data}, config);
+    return api.post(`/campaign/get-by-year`, {...data}, config);
   }
   
   export function UpdateUser(data) {
