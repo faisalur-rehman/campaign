@@ -64,7 +64,7 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     Type de campagne :<span>
-                      {/* {form3.Campaign_type} */}
+                      {form3.Campaign_type}
                       </span>
                   </span>
                 </div>
@@ -82,7 +82,7 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     Thematic :<span>
-                      {/* {form3.Thematic} */}
+                      {form3.Thematic}
                       </span>
                   </span>
                 </div>
@@ -90,7 +90,7 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     Start Date :<span>
-                      {/* {form3.startDate} */}
+                      {form3.startDate}
                       </span>
                   </span>
                 </div>
@@ -98,7 +98,7 @@ const CreateCampaign4 = () => {
                   <a></a>
                   <span>
                     End Date :<span>
-                      {/* {form3.endDate} */}
+                      {form3.endDate}
                       </span>
                   </span>
                 </div>

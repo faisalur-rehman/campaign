@@ -49,13 +49,12 @@ const FormCampaign2 = () => {
     const addAction={
       action_type:form.formValues.Action,
       target:form.formValues.target,
-      channelArray:[
-        {
+     
         channel_type:formValues.channel_type,
         Volume:formValues.Volume1,
         cost:formValues.cost
-        }
-      ]
+        
+      
     } 
     // console.log("form1",addAction)
     try {

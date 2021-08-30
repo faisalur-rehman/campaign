@@ -72,7 +72,7 @@ const Sidebar = () => {
                 >
 
                   <div>
-                    {data.isAdmin === true ? (
+                    {data && data.isAdmin === true ? (
                       <div>
                         <p>admin</p>
                         <div

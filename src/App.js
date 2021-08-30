@@ -28,98 +28,29 @@ function App() {
   const [isLoggedin, setisLoggedin] = useState();
   const data = JSON.parse(localStorage.getItem("login"));
   const token = localStorage.getItem("token");
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-
-  //   if (token) {
-  //     console.log("token found");
-  //     setisLoggedin(true);
-  //   } else {
-  //     console.log("token not found");
-  //     setisLoggedin(false);
-  //   }
-  // }, []);
+  
 
   return (
     <Router>
       <Switch>
         <ProtectedRoute exact path="/" component={Login} />
-        <ProtectedRoute isAuth  path="/marketing-plan" component={MarketingPlan} />
-        <ProtectedRoute isAuth  path="/create-campaign" component={FormCampaign } />
+        <ProtectedRoute isAuth   path="/marketing-plan" component={MarketingPlan} />
+        <ProtectedRoute isAuth exact path="/create-campaign" component={FormCampaign } />
         <ProtectedRoute isAuth  path="/create-campaign2" component={FormCampaign2  } />
         <ProtectedRoute isAuth  path="/create-campaign3" component={FormCampaign3 } />
         <ProtectedRoute isAuth  path="/create-campaign4" component={CreateCampaign4 } />
-
-
+        <ProtectedRoute isAuth  path="/your-campaigns" component={CampForm } />
+        <ProtectedRoute isAuth isAdmin  path="/Create-User" component={SignUPForm} />
+        <ProtectedRoute isAuth isAdmin  path="/User-List" component={UserList} />
+        <ProtectedRoute isAuth isAdmin  path="/User/:id" component={EditForm } />
+        <ProtectedRoute isAuth isAdmin  path="/user-company/:id" component={Company } />
+        <ProtectedRoute isAuth isAdmin  path="/editCompany/:id" component={EditCompanyForm } />
+        <ProtectedRoute isAuth isAdmin  path="/companyDetails" component={CompanyDetail   } />
 
       </Switch>
     </Router>
   )
 
-  if (isLoggedin) {
-    return <p>Logged In</p>
-  } else {
-    return <p>Not Logged In</p>
-  }
-
-  return (
-    <Router>
-      <div>
-        {isLoggedin ? (
-          <div>
-            {data.isAdmin === true ? (
-              <Switch>
-                <Route path="/Create-User">
-                  <SignUPForm />
-                </Route>
-                <Route path="/User-List">
-                  <UserList />
-                </Route>
-                <Route path="/User/:id">
-                  <EditForm />
-                </Route>
-                <Route path="/user-company/:id">
-                  <Company />
-                </Route>
-                <Route path="/editCompany/:id">
-                  <EditCompanyForm />
-                </Route>
-                <Route path="/companyDetails">
-                  <CompanyDetail />
-                </Route>
-              </Switch>
-            ) : (
-              <Switch>
-                <Route path="/your-campaigns">
-                  <CampForm />
-                </Route>
-                <Route path="/create-campaign">
-                  <FormCampaign />
-                </Route>
-                <Route path="/create-campaign2">
-                  <FormCampaign2 />
-                </Route>
-                <Route path="/create-campaign3">
-                  <FormCampaign3 />
-                </Route>
-                <Route path="/create-campaign4">
-                  <CreateCampaign4 />
-                </Route>
-                <Route path="/marketing-plan">
-                  <MarketingPlan />
-                </Route>
-              </Switch>
-            )}
-          </div>
-        ) : (
-          <Route path="/">
-            <Login />
-          </Route>
-        )}
-      </div>
-    </Router>
-  );
 }
 
 export default App;
