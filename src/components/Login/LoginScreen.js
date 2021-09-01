@@ -33,11 +33,10 @@ function FormFields({ error }) {
                     placeholder="Password"
                   />
                 </div>
-                <div class="remember_me">
-                  <Field selected={true} type="checkbox" />
-                  <label>Remeber me</label>
-                </div>
-                <p style={{color:"red"}}>{error.data && error.data.message}</p>
+
+                <p style={{ color: "red" }}>
+                  {error.data && error.data.message}
+                </p>
                 <div class="submit_btn">
                   <button type="submit">Login</button>
                 </div>

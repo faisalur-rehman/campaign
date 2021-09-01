@@ -9,13 +9,6 @@ const Sidebar = () => {
 
   const data = JSON.parse(localStorage.getItem("login"));
   const token = localStorage.getItem("token");
-  // useEffect(() => {
-  //   function Roles() {
-
-  //   }
-
-  //   Roles();
-  // }, [data.isAdmin]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -216,9 +209,9 @@ const Sidebar = () => {
                   </div>
                 </div>
                 <div className="login_user_data">
-                  <h2>John Doe</h2>
-                  <span>User</span>
-                  <span>Audi France</span>
+                  <h2>{data.username}</h2>
+                  <span>{data.isAdmin ? "Admin" : "User"}</span>
+                  {/* <span>Audi France</span> */}
                 </div>
               </div>
             </div>

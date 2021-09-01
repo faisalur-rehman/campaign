@@ -142,8 +142,8 @@ const MarketingPlan = () => {
               marketing.data.data.map((plan, index) => (
                 <tr class="Employee_Leave_table_body">
                   <td>{plan.month}</td>
-                  {plan.S1.map((data) => (
-                    <td>
+                  <td>
+                    {plan.S1.map((data) => (
                       <div class="advertisment_click_box">
                         <div class="advertisment">
                           {data.thematic}{" "}
@@ -182,138 +182,132 @@ const MarketingPlan = () => {
                           </div>
                         </div>
                       </div>
-                    </td>
-                  ))}
+                    ))}
+                  </td>
                   <td>
                     {plan.S2.map((data) => (
-                      <td>
-                        <div class="advertisment_click_box">
-                          <div class="advertisment">
-                            {data.thematic}{" "}
-                            <i
-                              class="fas fa-plus"
-                              onClick={() => handleClick(data._id)}
-                            ></i>
+                      <div class="advertisment_click_box">
+                        <div class="advertisment">
+                          {data.thematic}{" "}
+                          <i
+                            class="fas fa-plus"
+                            onClick={() => handleClick(data._id)}
+                          ></i>
+                        </div>
+                        <div
+                          class="advertisment_click_box_detail"
+                          style={{
+                            display: id === data._id ? "block" : "none",
+                            color: "white",
+                          }}
+                        >
+                          <p>List of actions and cost</p>
+                          <div class="click_box_inner_detail">
+                            <small>--{data.actions[0].actionType}</small>
+                            <small>
+                              --Cost HT: ${data.actions[0].channelCost}{" "}
+                            </small>
                           </div>
-                          <div
-                            class="advertisment_click_box_detail"
-                            style={{
-                              display: id === data._id ? "block" : "none",
-                              color: "white",
-                            }}
-                          >
-                            <p>List of actions and cost</p>
-                            <div class="click_box_inner_detail">
-                              <small>--{data.actions[0].actionType}</small>
-                              <small>
-                                --Cost HT: ${data.actions[0].channelCost}{" "}
-                              </small>
-                            </div>
-                            <div class="click_box_inner_btn">
-                              <Link
-                                to={`/edit-campaign/${data._id}`}
-                                style={{ color: "white" }}
-                              >
-                                Edit
-                              </Link>
-                              <a>
-                                <i
-                                  class="fas fa-trash"
-                                  onClick={() => handleDelete(data._id)}
-                                ></i>
-                              </a>
-                            </div>
+                          <div class="click_box_inner_btn">
+                            <Link
+                              to={`/edit-campaign/${data._id}`}
+                              style={{ color: "white" }}
+                            >
+                              Edit
+                            </Link>
+                            <a>
+                              <i
+                                class="fas fa-trash"
+                                onClick={() => handleDelete(data._id)}
+                              ></i>
+                            </a>
                           </div>
                         </div>
-                      </td>
+                      </div>
                     ))}
                   </td>
                   <td>
                     {plan.S3.map((data) => (
-                      <td>
-                        <div class="advertisment_click_box">
-                          <div class="advertisment">
-                            {data.thematic}{" "}
-                            <i
-                              class="fas fa-plus"
-                              onClick={() => handleClick(data._id)}
-                            ></i>
+                      <div class="advertisment_click_box">
+                        <div class="advertisment">
+                          {data.thematic}{" "}
+                          <i
+                            class="fas fa-plus"
+                            onClick={() => handleClick(data._id)}
+                          ></i>
+                        </div>
+                        <div
+                          class="advertisment_click_box_detail"
+                          style={{
+                            display: id === data._id ? "block" : "none",
+                            color: "white",
+                          }}
+                        >
+                          <p>List of actions and cost</p>
+                          <div class="click_box_inner_detail">
+                            <small>--{data.actions[0].actionType}</small>
+                            <small>
+                              --Cost HT: ${data.actions[0].channelCost}{" "}
+                            </small>
                           </div>
-                          <div
-                            class="advertisment_click_box_detail"
-                            style={{
-                              display: id === data._id ? "block" : "none",
-                              color: "white",
-                            }}
-                          >
-                            <p>List of actions and cost</p>
-                            <div class="click_box_inner_detail">
-                              <small>--{data.actions[0].actionType}</small>
-                              <small>
-                                --Cost HT: ${data.actions[0].channelCost}{" "}
-                              </small>
-                            </div>
-                            <div class="click_box_inner_btn">
-                              <Link
-                                to={`/edit-campaign/${data._id}`}
-                                style={{ color: "white" }}
-                              >
-                                Edit
-                              </Link>
-                              <a>
-                                <i
-                                  class="fas fa-trash"
-                                  onClick={() => handleDelete(data._id)}
-                                ></i>
-                              </a>
-                            </div>
+                          <div class="click_box_inner_btn">
+                            <Link
+                              to={`/edit-campaign/${data._id}`}
+                              style={{ color: "white" }}
+                            >
+                              Edit
+                            </Link>
+                            <a>
+                              <i
+                                class="fas fa-trash"
+                                onClick={() => handleDelete(data._id)}
+                              ></i>
+                            </a>
                           </div>
                         </div>
-                      </td>
+                      </div>
                     ))}
                   </td>
                   <td>
                     {plan.S4.map((data) => (
-                      <td>
-                        <div class="advertisment_click_box">
-                          <div class="advertisment">
-                            {data.thematic}{" "}
-                            <i
-                              class="fas fa-plus"
-                              onClick={() => handleClick(data._id)}
-                            ></i>
+                      <div class="advertisment_click_box">
+                        <div class="advertisment">
+                          {data.thematic}{" "}
+                          <i
+                            class="fas fa-plus"
+                            onClick={() => handleClick(data._id)}
+                          ></i>
+                        </div>
+                        <div
+                          class="advertisment_click_box_detail"
+                          style={{
+                            display: id === data._id ? "block" : "none",
+                            color: "white",
+                          }}
+                        >
+                          <p>List of actions and cost</p>
+                          <div class="click_box_inner_detail">
+                            <small>--{data.actions[0].actionType}</small>
+                            <small>
+                              --Cost HT: ${data.actions[0].channelCost}{" "}
+                            </small>
                           </div>
-                          <div
-                            class="advertisment_click_box_detail"
-                            style={{
-                              display: id === data._id ? "block" : "none",
-                              color: "white",
-                            }}
-                          >
-                            <p>List of actions and cost</p>
-                            <div class="click_box_inner_detail">
-                              <small>--{data.actions[0].actionType}</small>
-                              <small>
-                                --Cost HT: ${data.actions[0].channelCost}{" "}
-                              </small>
-                            </div>
-                            <div class="click_box_inner_btn">
-                              <Link
-                                to={`/edit-campaign/${data._id}`}
-                                style={{ color: "white" }}
-                              >
-                                Edit
-                              </Link>
-                              <a>
-                                <i
-                                  class="fas fa-trash"
-                                  onClick={() => handleDelete(data._id)}
-                                ></i>
-                              </a>
-                            </div>
+                          <div class="click_box_inner_btn">
+                            <Link
+                              to={`/edit-campaign/${data._id}`}
+                              style={{ color: "white" }}
+                            >
+                              Edit
+                            </Link>
+                            <a>
+                              <i
+                                class="fas fa-trash"
+                                onClick={() => handleDelete(data._id)}
+                              ></i>
+                            </a>
                           </div>
                         </div>
-                      </td>
+                      </div>
                     ))}
                   </td>
                 </tr>
