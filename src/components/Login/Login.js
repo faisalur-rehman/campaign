@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import useApi from "../../hooks/useApi";
 import LoginForm from "./LoginScreen";
@@ -12,12 +12,24 @@ const initialValues = {
 const Login = () => {
   const history = useHistory();
   const { error, request } = useApi(api.loginUser);
+  useEffect(() => {
+    function fecthData() {
+      if(localStorage.getItem('token') && localStorage.getItem('isAdmin')){
+        history.push('/all-campaign')
+      }
+      else if(localStorage.getItem('token')){
+        history.push('create-campaign')
+      }
+    }
+    fecthData()
+  }, [])
   async function handleSubmit({ formValues }) {
     console.log("form", formValues);
     try {
       const { data } = await request({ ...formValues });
       // console.log("Login",data.isAdmin)
       localStorage.setItem("token", data.token);
+      data.isAdmin && localStorage.setItem("isAdmin", data.isAdmin);
       localStorage.setItem("login", JSON.stringify(data));
 
       if (data.isAdmin === true) {

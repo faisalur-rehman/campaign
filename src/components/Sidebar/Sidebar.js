@@ -123,6 +123,23 @@ const Sidebar = () => {
                             <span>User Details</span>
                           </Link>
                         </div>
+                        <div
+                          className="data_container_single_list"
+                          onclick="marketing_section()"
+                        >
+                          <Link
+                            to="/all-campaign"
+                            onClick={() => handleActive(3)}
+                            className={`change_active ${
+                              active[3]
+                                ? "data_container_single_list_active"
+                                : ""
+                            }`}
+                          >
+                            <i className="far fa-calendar-alt"></i>
+                            <span>All Campaign</span>
+                          </Link>
+                        </div>
                       </div>
                     ) : (
                       <div>

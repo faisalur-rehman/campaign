@@ -23,6 +23,7 @@ import UpdateFormCampaign from "./components/UpdateCampaign/UpdateFormCampaign";
 import UpdateFormCampaign2 from "./components/UpdateCampaign/UpdateFormcampaign2";
 import UpdateFormCampaign3 from "./components/UpdateCampaign/UpdateFormCampaign3";
 import UpdateCampaign4 from "./components/UpdateCampaign/UpdateCampaign4";
+import AllCampForm from "./admincampaign/campForm";
 
 function App() {
   // const history = useHistory();
@@ -107,6 +108,12 @@ function App() {
           isAdmin
           path="/companyDetails"
           component={CompanyDetail}
+        />
+        <ProtectedRoute
+          isAuth
+          isAdmin
+          path="/all-campaign"
+          component={AllCampForm}
         />
       </Switch>
     </Router>

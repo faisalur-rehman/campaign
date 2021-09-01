@@ -3,7 +3,7 @@ import axios from "axios";
 const DEV_URL = "http://localhost:8000";
 const PROD_URL = "https://campaign-tool-restapi.herokuapp.com/";
 const api = axios.create({
-  baseURL: DEV_URL,
+  baseURL: PROD_URL,
 });
 
 const config = {
@@ -34,6 +34,10 @@ export function UserDetails() {
 
 export function getuserCompany() {
   return api.get(`/campaign/get-user-company`, config);
+}
+
+export function getAllCampaign() {
+  return api.get(`/campaign/get-all-campaigns`, config);
 }
 export function allCompany() {
   return api.get(`/company/all`, config);
