@@ -1,21 +1,26 @@
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import Layout from "../Layout/Layout";
-import {Field} from "formik"
+import { Field } from "formik";
 import useApi from "../../hooks/useApi";
-import * as api from "../../api/api"
+import * as api from "../../api/api";
 import { useParams } from "react-router-dom";
 import AppForm from "../AppForm/AppForm";
 import campForm from "./campForm";
-const YourCampaigns = ({data ,initialValues ,handleChange}) => {
+
+const YourCampaigns = ({ data, initialValues, handleChange }) => {
   return (
     // <AppForm data={data}>
-      <ComapnyForm data={data} initialValues={initialValues} handleChange={handleChange} />
+    <ComapnyForm
+      data={data}
+      initialValues={initialValues}
+      handleChange={handleChange}
+    />
     // </AppForm>
   );
 };
 
 export default YourCampaigns;
-const ComapnyForm=({data ,handleChange})=>{
+const ComapnyForm = ({ data, handleChange }) => {
   return (
     <Layout>
       <section className="campaign_progress_section" id="campaign_progress">
@@ -28,20 +33,23 @@ const ComapnyForm=({data ,handleChange})=>{
           <div className="campaign_progress_campaign_list">
             <a>
               <span>Concession (Car Dealer)</span>
-               <select
-                // onChange={handleChange}
-      >
-        {data && data.map((data,index)=>(
-        <option value={data.company} label={data.company} />
-        ))}
-        
-      </select>
-             
+              <select
+              // onChange={handleChange}
+              >
+                {data &&
+                  data.map((data, index) => (
+                    <option value={data.company} label={data.company} />
+                  ))}
+              </select>
             </a>
           </div>
         </div>
-<input type="text" className="searchTerm" placeholder="Search city here"
-      onChange={handleChange}/>
+        <input
+          type="text"
+          className="searchTerm"
+          placeholder="Search city here"
+          onChange={handleChange}
+        />
         <div className="campaign_progress_body">
           <div className="campaign_inprogrss_done_detail">
             <div className="campaign_inprogrss_done_detail_heading">

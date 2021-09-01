@@ -6,30 +6,29 @@ const Sidebar = () => {
   const history = useHistory();
   const [role, setrole] = useState();
   const [isLoggedin, setisLoggedin] = useState();
-  
 
-  const data = JSON.parse(localStorage.getItem("login"))
-  const token =localStorage.getItem("token")
+  const data = JSON.parse(localStorage.getItem("login"));
+  const token = localStorage.getItem("token");
   // useEffect(() => {
   //   function Roles() {
-      
+
   //   }
 
   //   Roles();
   // }, [data.isAdmin]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token")
+    const token = localStorage.getItem("token");
     if (token) {
-      setisLoggedin(true)
+      setisLoggedin(true);
     } else {
-      setisLoggedin(false)
+      setisLoggedin(false);
     }
-  }, []) 
+  }, []);
 
   function handleLogout() {
     localStorage.removeItem("token");
-    localStorage.removeItem("login")
+    localStorage.removeItem("login");
     setisLoggedin(false);
 
     history.push("/");
@@ -50,7 +49,7 @@ const Sidebar = () => {
 
   return (
     <div>
-      {isLoggedin ? (
+      {localStorage.getItem("token") ? (
         <div>
           <div className="admin_pannel_dashnboard responsive_nav_bar">
             <div className="dashnboard_data_container">
@@ -70,11 +69,9 @@ const Sidebar = () => {
                   className="dashnboard_data_container_list"
                   id="change_nav_active"
                 >
-
                   <div>
                     {data && data.isAdmin === true ? (
                       <div>
-                        <p>admin</p>
                         <div
                           className="data_container_single_list"
                           onclick="marketing_section()"
@@ -129,7 +126,6 @@ const Sidebar = () => {
                       </div>
                     ) : (
                       <div>
-                        <p>user</p>
                         <div
                           className="data_container_single_list"
                           onclick="compain_progress_section()"
@@ -147,6 +143,7 @@ const Sidebar = () => {
                             <span>Vos campagnes</span>
                           </Link>
                         </div>
+
                         <div
                           className="data_container_single_list"
                           onclick="create_compain_section()"

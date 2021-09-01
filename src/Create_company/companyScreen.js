@@ -3,18 +3,18 @@ import React from "react";
 import AppForm from "../components/AppForm/AppForm";
 import Layout from "../components/Layout/Layout";
 
-const Form = ({ initialValues, handleSubmit, error }) => {
+const Form = ({ initialValues, handleSubmit, data }) => {
   // console.log("error", error)
   return (
     <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
-      <CompanyFields/>
+      <CompanyFields data={data} />
     </AppForm>
   );
 };
 
 export default Form;
 
-function CompanyFields({ error }) {
+function CompanyFields({ data }) {
   return (
     <Layout>
       <section class="login_section" id="login_section">
@@ -26,8 +26,7 @@ function CompanyFields({ error }) {
                 <div class="input_field">
                   <Field name="name" type="text" placeholder="Company" />
                 </div>
-                
-               
+                <p style={{ color: "green" }}>{data && data.message}</p>
                 <div class="submit_btn">
                   <button type="submit">Create</button>
                 </div>

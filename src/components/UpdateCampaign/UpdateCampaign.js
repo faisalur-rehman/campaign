@@ -4,14 +4,14 @@ import Layout from "../Layout/Layout";
 import { Field } from "formik";
 import AppForm from "../AppForm/AppForm";
 
-const CampForm = ({ initialValues, handleSubmit }) => {
+const EditCampaign = ({ initialValues, handleSubmit }) => {
   return (
     <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
       <CreateCampaign />
     </AppForm>
   );
 };
-export default CampForm;
+export default EditCampaign;
 
 const CreateCampaign = () => {
   return (
@@ -38,7 +38,7 @@ const CreateCampaign = () => {
                   </label>
 
                   <Field
-                    name="Campaign"
+                    name="campaignType"
                     as="select"
                     classNameName="my-select"
                     required
@@ -67,7 +67,7 @@ const CreateCampaign = () => {
                   </label>
                   <Field
                     type="text"
-                    name="Thematic"
+                    name="thematic"
                     required
                     placeholder="Thematic"
                   />
@@ -77,7 +77,7 @@ const CreateCampaign = () => {
                     End date <span>*</span>
                   </label>
                   <div className="page_one_date_field">
-                    <Field name="EndDate" type="date" required />
+                    <Field name="endDate" type="date" required />
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@ const CreateCampaign = () => {
                     Add Action <span>*</span>
                   </label>
                   <Field
-                    name="Action"
+                    name="actionType"
                     as="select"
                     className="my-select"
                     required
@@ -144,7 +144,7 @@ const CreateCampaign = () => {
                 <div className="single_field">
                   <label>Gender</label>
                   <div className="page_one_date_field">
-                    <Field name="Gender" type="text" />
+                    <Field name="gender" type="text" />
                   </div>
                 </div>
               </div>

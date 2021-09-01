@@ -1,19 +1,21 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
-import { Field, select } from "formik";
+import { Field } from "formik";
 import AppForm from "../AppForm/AppForm";
 
-const Campform2 = ({ initialValues, handleSubmit }) => {
+const UpdateCampform2 = ({ initialValues, handleSubmit }) => {
+  console.log("inside campaign 2nd");
+  const { id } = useParams();
   return (
     <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
-      <CreateCampaign2 />
+      <CreateCampaign2 id={id} />
     </AppForm>
   );
 };
 
-export default Campform2;
-const CreateCampaign2 = () => {
+export default UpdateCampform2;
+const CreateCampaign2 = ({ id }) => {
   const history = useHistory();
   return (
     <Layout>
@@ -34,33 +36,12 @@ const CreateCampaign2 = () => {
             <div className="page_two_heading">
               <h2>Medias/Channels</h2>
             </div>
-            {/* <form className="page_one_form_one">
-              <div className="input_fields_details">
-                <div className="single_field">
-                  <Field
-                    name="channel_type"
-                    as="select"
-                    classNameName="my-select"
-                    required
-                  >
-                    <option selected disabled label="Select Channel" />
-                    <option value="Press" label="Press" />
-                    <option value="Radio" label="Radio" />
-                    <option value="TV" label="TV" />
-                    <option value="Reseaux Sociaux" label="Reseaux Sociaux" />
-                    <option value="Emails" label="Emails" />
-                    <option value="Sms" label="Sms" />
-                  </Field>
-                </div>
-              </div>
-            </form> */}
-
             <div className="page_two_form_two">
               <div className="page_two_input_fields_details">
                 <div className="page_two_single_field">
                   <label className="hidden_label">Social networks</label>
                   <Field
-                    name="channel_type"
+                    name="channelType"
                     as="select"
                     classNameName="my-select"
                     required
@@ -78,14 +59,19 @@ const CreateCampaign2 = () => {
                   <label>
                     Cost HT (en €)<span>*</span>
                   </label>
-                  <Field name="cost" type="text" placeholder="500" required />
+                  <Field
+                    name="channelCost"
+                    type="text"
+                    placeholder="500"
+                    required
+                  />
                 </div>
                 <div className="page_two_single_field">
                   <label>
                     Volume<span>*</span>
                   </label>
                   <Field
-                    name="Volume1"
+                    name="channelVolume"
                     type="text"
                     placeholder="15000"
                     required
@@ -103,10 +89,10 @@ const CreateCampaign2 = () => {
 
             <div className="next_back_button_box">
               <div className="next_back_button">
-                <button onClick={() => history.push("/create-campaign")}>
+                <button onClick={() => history.push(`/edit-campaign/${id}`)}>
                   Back
                 </button>
-                <button>Next</button>
+                <button type="submit">Next</button>
               </div>
             </div>
           </div>

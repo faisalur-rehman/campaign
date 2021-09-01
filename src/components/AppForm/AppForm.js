@@ -5,7 +5,7 @@ const AppForm = ({
   initialValues,
   validationSchema,
   handleSubmit,
-  enableReinitialize = false,
+  enableReinitialize = true,
 } = {}) => {
   return (
     <Formik

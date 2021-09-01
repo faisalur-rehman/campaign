@@ -1,7 +1,7 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Login from "./components/Login/Login";
-import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { HashRouter as Router, Switch } from "react-router-dom";
 import YourCampaigns from "./components/YourCampaigns/YourCampaigns";
 import CreateCampaign3 from "./components/CreateCampaign/CreateCampaign3";
 import CreateCampaign4 from "./components/CreateCampaign/CreateCampaign4";
@@ -19,38 +19,98 @@ import Admin from "./admin";
 import CompanyDetail from "./Create_company/allCompanies";
 import EditCompanyForm from "./Create_company/editCompany";
 import ProtectedRoute from "./protected-route";
-
-
+import UpdateFormCampaign from "./components/UpdateCampaign/UpdateFormCampaign";
+import UpdateFormCampaign2 from "./components/UpdateCampaign/UpdateFormcampaign2";
+import UpdateFormCampaign3 from "./components/UpdateCampaign/UpdateFormCampaign3";
+import UpdateCampaign4 from "./components/UpdateCampaign/UpdateCampaign4";
 
 function App() {
-  const history = useHistory();
-  const [role, setrole] = useState();
-  const [isLoggedin, setisLoggedin] = useState();
-  const data = JSON.parse(localStorage.getItem("login"));
-  const token = localStorage.getItem("token");
-  
+  // const history = useHistory();
+  // const [role, setrole] = useState();
+  // const [isLoggedin, setisLoggedin] = useState();
+  // const data = JSON.parse(localStorage.getItem("login"));
+  // const token = localStorage.getItem("token");
 
   return (
     <Router>
       <Switch>
         <ProtectedRoute exact path="/" component={Login} />
-        <ProtectedRoute isAuth   path="/marketing-plan" component={MarketingPlan} />
-        <ProtectedRoute isAuth exact path="/create-campaign" component={FormCampaign } />
-        <ProtectedRoute isAuth  path="/create-campaign2" component={FormCampaign2  } />
-        <ProtectedRoute isAuth  path="/create-campaign3" component={FormCampaign3 } />
-        <ProtectedRoute isAuth  path="/create-campaign4" component={CreateCampaign4 } />
-        <ProtectedRoute isAuth  path="/your-campaigns" component={CampForm } />
-        <ProtectedRoute isAuth isAdmin  path="/Create-User" component={SignUPForm} />
-        <ProtectedRoute isAuth isAdmin  path="/User-List" component={UserList} />
-        <ProtectedRoute isAuth isAdmin  path="/User/:id" component={EditForm } />
-        <ProtectedRoute isAuth isAdmin  path="/user-company/:id" component={Company } />
-        <ProtectedRoute isAuth isAdmin  path="/editCompany/:id" component={EditCompanyForm } />
-        <ProtectedRoute isAuth isAdmin  path="/companyDetails" component={CompanyDetail   } />
-
+        <ProtectedRoute
+          isAuth
+          path="/marketing-plan"
+          component={MarketingPlan}
+        />
+        <ProtectedRoute
+          isAuth
+          exact
+          path="/create-campaign"
+          component={FormCampaign}
+        />
+        <ProtectedRoute
+          isAuth
+          path="/create-campaign2"
+          component={FormCampaign2}
+        />
+        <ProtectedRoute
+          isAuth
+          path="/create-campaign3"
+          component={FormCampaign3}
+        />
+        <ProtectedRoute
+          isAuth
+          path="/create-campaign4"
+          component={CreateCampaign4}
+        />
+        <ProtectedRoute isAuth path="/your-campaigns" component={CampForm} />
+        <ProtectedRoute
+          isAuth
+          isAdmin
+          path="/Create-User"
+          component={SignUPForm}
+        />
+        <ProtectedRoute
+          isAuth
+          path={`/edit-campaign/:id`}
+          component={UpdateFormCampaign}
+        />
+        <ProtectedRoute
+          isAuth
+          path={`/edit-campaign2/:id`}
+          component={UpdateFormCampaign2}
+        />
+        <ProtectedRoute
+          isAuth
+          path={`/edit-campaign3/:id`}
+          component={UpdateFormCampaign3}
+        />
+        <ProtectedRoute
+          isAuth
+          path={`/edit-campaign4/:id`}
+          component={UpdateCampaign4}
+        />
+        <ProtectedRoute isAdmin isAuth path="/User-List" component={UserList} />
+        <ProtectedRoute isAuth isAdmin path="/User/:id" component={EditForm} />
+        <ProtectedRoute
+          isAdmin
+          isAuth
+          path="/user-company/:id"
+          component={Company}
+        />
+        <ProtectedRoute
+          isAuth
+          isAdmin
+          path="/editCompany/:id"
+          component={EditCompanyForm}
+        />
+        <ProtectedRoute
+          isAuth
+          isAdmin
+          path="/companyDetails"
+          component={CompanyDetail}
+        />
       </Switch>
     </Router>
-  )
-
+  );
 }
 
 export default App;

@@ -1,43 +1,47 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import useApi from "../../hooks/useApi";
 import * as api from "../../api/api";
 
-const CreateCampaign4 = () => {
+const UpdateCampaign4 = () => {
+  const { id } = useParams();
   const history = useHistory();
-  const { request, data } = useApi(api.CreateCampaign);
-  const form3 = JSON.parse(localStorage.getItem("form3"));
-  const form21 = JSON.parse(localStorage.getItem("form21"));
-  const form1 = JSON.parse(localStorage.getItem("form1"));
+  const { error, request, data } = useApi(api.UpdateCampaign);
+  const form3 = JSON.parse(localStorage.getItem("updatedForm3"));
+  const form2 = JSON.parse(localStorage.getItem("updateForm2"));
+  const form1 = JSON.parse(localStorage.getItem("updatedForm1"));
   console.log("form1", form1);
+  console.log("form2", form2);
   console.log("form3", form3);
   async function handleSubmit() {
     const campaign = {
-      campaignType: form3.Campaign_type,
-      thematic: form3.Thematic,
+      campaignType: form3.campaignType,
+      thematic: form3.thematic,
       startDate: form3.startDate,
       endDate: form3.endDate,
       actions: [
         {
-          actionType: form1.formValues.Action,
+          actionType: form1.formValues.actionType,
           target: form1.formValues.target,
           age: form1.formValues.age,
-          gender: form1.formValues.Gender,
-          channelType: form21.channel_type,
-          channelCost: form21.cost,
-          channelVolume: form21.Volume1,
+          gender: form1.formValues.gender,
+          channelType: form2.channelType,
+          channelCost: form2.channelCost,
+          channelVolume: form2.channelVolume,
         },
       ],
     };
-
+    console.log("campaign", campaign);
+    // console.log("form4", form2);
     try {
-      const { data } = await request(campaign);
+      const { data } = await request({ campaign, id });
       console.log("camp", data);
-      localStorage.removeItem("form1");
-      localStorage.removeItem("form21");
-      localStorage.removeItem("form3");
+      localStorage.removeItem("updatedForm1");
+      localStorage.removeItem("updateForm2");
+      localStorage.removeItem("updatedForm3");
     } catch (_) {}
+    // window.reload()
   }
   return (
     <Layout>
@@ -63,14 +67,14 @@ const CreateCampaign4 = () => {
                 <div className="page_four_single_field">
                   <a></a>
                   <span>
-                    Type de campagne :<span>{form3.Campaign_type}</span>
+                    Type de campagne :<span>{form3.campaignType}</span>
                   </span>
                 </div>
                 <div className="page_four_single_field">
                   <a></a>
 
                   <span>
-                    Type d'action :<span>{form1.formValues.Action}</span>
+                    Type d'action :<span>{form1.formValues.actionType}</span>
                   </span>
                 </div>
               </div>
@@ -78,7 +82,7 @@ const CreateCampaign4 = () => {
                 <div className="page_four_single_field">
                   <a></a>
                   <span>
-                    Thematic :<span>{form3.Thematic}</span>
+                    Thematic :<span>{form3.thematic}</span>
                   </span>
                 </div>
                 <div className="page_four_single_field">
@@ -100,7 +104,7 @@ const CreateCampaign4 = () => {
               <div className="page_two_action_list_heading">
                 <span>Action 1</span>
                 <p>
-                  Type d'action <small> {form1.formValues.Action}</small>
+                  Type d'action <small> {form1.formValues.actionType}</small>
                 </p>
                 <a>
                   <i className="fas fa-ellipsis-h"></i>
@@ -110,28 +114,28 @@ const CreateCampaign4 = () => {
                 <div className="page_two_action_detail_data">
                   <span>Targeting</span>
                   <p>
-                    {form1.formValues.target}/{form1.age}
+                    {form1.formValues.target}--{form1.formValues.age}
                   </p>
                 </div>
                 <div className="page_two_action_detail_data">
                   <span>channel-type</span>
-                  <p>{form21.channel_type}</p>
+                  <p>{form2.channelType}</p>
                 </div>
 
                 <div className="page_two_action_detail_data">
                   <span>cost</span>
-                  <p>{form21.cost}</p>
+                  <p>{form2.channelCost}</p>
                 </div>
                 <div className="page_two_action_detail_data">
                   <span>Volume</span>
-                  <p>{form21.Volume1}</p>
+                  <p>{form2.channelVolume}</p>
                 </div>
               </div>
             </div>
-            {data && <p style={{ color: "green" }}>{data.message}</p>}
+            <p style={{ color: "green" }}>{data && data.message}</p>
             <div className="next_back_button_box">
               <div className="next_back_button">
-                <button onClick={() => history.push("/create-campaign3")}>
+                <button onClick={() => history.push(`/edit-campaign3/${id}`)}>
                   Back
                 </button>
                 <button onClick={handleSubmit}>Create</button>
@@ -144,4 +148,4 @@ const CreateCampaign4 = () => {
   );
 };
 
-export default CreateCampaign4;
+export default UpdateCampaign4;

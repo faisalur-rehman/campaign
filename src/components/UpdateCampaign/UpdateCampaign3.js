@@ -1,24 +1,26 @@
 import React from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { Field, select } from "formik";
 import Layout from "../Layout/Layout";
-
-import { Field } from "formik";
 import AppForm from "../AppForm/AppForm";
 
-const CampForm = ({ initialValues, handleSubmit }) => {
+const Editform3 = ({ initialValues, handleSubmit }) => {
+  const { id } = useParams();
   return (
     <AppForm initialValues={initialValues} handleSubmit={handleSubmit}>
-      <CreateCampaign />
+      <UpdateCampaign3 id={id} />
     </AppForm>
   );
 };
-export default CampForm;
 
-const CreateCampaign = () => {
+export default Editform3;
+const UpdateCampaign3 = ({ id }) => {
+  const history = useHistory();
   return (
     <Layout>
       <section
         className="create_campaign_section"
-        id="create_campaign_page_one"
+        id="create_campaign_page_three"
       >
         <div className="campaign_progress_header">
           <div className="header_logo_part">
@@ -38,7 +40,7 @@ const CreateCampaign = () => {
                   </label>
 
                   <Field
-                    name="Campaign"
+                    name="campaignType"
                     as="select"
                     classNameName="my-select"
                     required
@@ -67,7 +69,7 @@ const CreateCampaign = () => {
                   </label>
                   <Field
                     type="text"
-                    name="Thematic"
+                    name="thematic"
                     required
                     placeholder="Thematic"
                   />
@@ -77,11 +79,12 @@ const CreateCampaign = () => {
                     End date <span>*</span>
                   </label>
                   <div className="page_one_date_field">
-                    <Field name="EndDate" type="date" required />
+                    <Field name="endDate" type="date" required />
                   </div>
                 </div>
               </div>
             </div>
+
             <div className="add_action_section">
               <div className="form_one_add_action_box">
                 <h2>Add an action</h2>
@@ -90,67 +93,30 @@ const CreateCampaign = () => {
                 </a>
               </div>
             </div>
-            <div className="page_one_form_one">
+            <form className="page_one_form_one">
               <div className="input_fields_details">
                 <div className="single_field">
                   <label>
-                    Add Action <span>*</span>
+                    Campaign result <span>*</span>
                   </label>
-                  <Field
-                    name="Action"
-                    as="select"
-                    className="my-select"
-                    required
-                  >
-                    <option value="" label="Select" selected disabled />
-                    <option
-                      value="Action Constructer"
-                      label="Action Constructer"
-                    />
-                    <option
-                      value="Action Concession"
-                      label="Action Concession"
-                    />
-                  </Field>
+                  <Field name="campaignResult" type="text" />
                 </div>
               </div>
               <div className="input_fields_details">
-                <div className="target_heading">
-                  <h4>Targeting</h4>
-                </div>
                 <div className="single_field">
-                  <Field
-                    name="target"
-                    as="select"
-                    classNameName="my-select"
-                    required
-                  >
-                    <option value="" label="Select" selected disabled />
-
-                    <option value="Clients actifs" label="Clients actifs" />
-                    <option value="Clients inactifs" label="Clients inactifs" />
-                    <option value="Autres" label="Autres" />
-                  </Field>
-                </div>
-                <div className="single_field">
-                  <label>Age</label>
-                  <div className="page_one_date_field">
-                    <Field
-                      name="age"
-                      placeholder="Between 25 and 45 years old"
-                    />
-                  </div>
-                </div>
-                <div className="single_field">
-                  <label>Gender</label>
-                  <div className="page_one_date_field">
-                    <Field name="Gender" type="text" />
-                  </div>
+                  <label>
+                    Do you recommend the service provider ?<span>*</span>
+                  </label>
+                  <textarea name="recommend" className="text-area"></textarea>
                 </div>
               </div>
-            </div>
+            </form>
+
             <div className="next_back_button_box">
               <div className="next_back_button">
+                <button onClick={() => history.push(`/edit-campaign2/${id}`)}>
+                  Back
+                </button>
                 <button type="submit">Next</button>
               </div>
             </div>
@@ -161,4 +127,4 @@ const CreateCampaign = () => {
   );
 };
 
-// export default CreateCampaign;
+// export default CreateCampaign3;
