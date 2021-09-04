@@ -177,10 +177,7 @@ const MarketingPlan = () => {
                             <a onClick={() => handleDelete(data._id)}>
                               <button className="btn btn-danger btn-sm">
                                 Delete
-                                <i
-                                  class="fas fa-trash"
-                                  // style={{ color: "red" }}
-                                ></i>
+                                <i class="fas fa-trash"></i>
                               </button>
                             </a>
                           </div>

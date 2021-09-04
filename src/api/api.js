@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const DEV_URL = "http://localhost:8000";
+// const DEV_URL = "http://localhost:8000";
 const PROD_URL = "https://campaign-tool-restapi.herokuapp.com/";
 const api = axios.create({
   baseURL: PROD_URL,
