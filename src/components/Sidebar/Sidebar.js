@@ -22,6 +22,7 @@ const Sidebar = () => {
   function handleLogout() {
     localStorage.removeItem("token");
     localStorage.removeItem("login");
+    localStorage.removeItem("isAdmin");
     setisLoggedin(false);
 
     history.push("/");
@@ -35,16 +36,11 @@ const Sidebar = () => {
   }
   console.log("active", active);
 
-  // if (!isLoggedin) {
-  //   console.log("not logged in ..")
-  //   return <p>Not Logged In</p>
-  // }
-
   return (
     <div>
       {localStorage.getItem("token") ? (
         <div>
-          <div className="admin_pannel_dashnboard responsive_nav_bar">
+          <div className="admin_pannel_dashnboard ">
             <div className="dashnboard_data_container">
               <div className="sidebar_close_btn">
                 <a className="open_close_nav">
@@ -202,8 +198,12 @@ const Sidebar = () => {
                           active[3] ? "data_container_single_list_active" : ""
                         }`}
                       >
-                        <i className="far fa-calendar-alt"></i>
-                        <button onClick={handleLogout}>Logout</button>
+                        <button
+                          onClick={handleLogout}
+                          className="btn btn-danger"
+                        >
+                          Logout
+                        </button>
                       </Link>
                     </div>
                   </div>

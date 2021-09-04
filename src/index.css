@@ -872,7 +872,7 @@ select {
 /*Tablet*/
 @media (min-width: 768px) and (max-width: 1024px) {
   .admin_pannel .admin_pannel_dashnboard {
-    /* transform: translateX(-100%); */
+    transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
     position: fixed;
     left: 0px;
@@ -920,7 +920,7 @@ select {
 /*mobile rotation*/
 @media (max-width: 767px) {
   .admin_pannel .admin_pannel_dashnboard {
-    /* transform: translateX(-100%); */
+    transform: translateX(-100%);
     transition: transform 0.3s ease-in-out;
     position: fixed;
     left: 0px;
@@ -1127,4 +1127,8 @@ tr:nth-child(even) {
 .view_created_employee_table table tr .view_created_employee_action_btn {
   position: relative;
   float: right;
+}
+
+a {
+  text-decoration: none !important;
 }

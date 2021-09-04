@@ -2,8 +2,7 @@ import "./App.css";
 import React from "react";
 import Login from "./components/Login/Login";
 import { HashRouter as Router, Switch } from "react-router-dom";
-import YourCampaigns from "./components/YourCampaigns/YourCampaigns";
-import CreateCampaign3 from "./components/CreateCampaign/CreateCampaign3";
+
 import CreateCampaign4 from "./components/CreateCampaign/CreateCampaign4";
 import MarketingPlan from "./components/MarketingPlan/MarketingPlan";
 import SignUPForm from "./CreateUser/SignUPForm";
@@ -14,8 +13,7 @@ import FormCampaign from "./components/CreateCampaign/FormCampaign";
 import FormCampaign2 from "./components/CreateCampaign/Formcampaign2";
 import FormCampaign3 from "./components/CreateCampaign/FormCampaign3";
 import CampForm from "./components/YourCampaigns/campForm";
-import { useHistory } from "react-router-dom";
-import Admin from "./admin";
+
 import CompanyDetail from "./Create_company/allCompanies";
 import EditCompanyForm from "./Create_company/editCompany";
 import ProtectedRoute from "./protected-route";
@@ -26,12 +24,6 @@ import UpdateCampaign4 from "./components/UpdateCampaign/UpdateCampaign4";
 import AllCampForm from "./admincampaign/campForm";
 
 function App() {
-  // const history = useHistory();
-  // const [role, setrole] = useState();
-  // const [isLoggedin, setisLoggedin] = useState();
-  // const data = JSON.parse(localStorage.getItem("login"));
-  // const token = localStorage.getItem("token");
-
   return (
     <Router>
       <Switch>

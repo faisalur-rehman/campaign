@@ -88,8 +88,6 @@ const MarketingPlan = () => {
     const buf = await workbook.xlsx.writeBuffer();
     saveAs(new Blob([buf]), "campaigns.xlsx");
   }
-
-  marketing.data && console.log("marketing plan", marketing.data.data);
   return (
     <Layout>
       <section
@@ -121,7 +119,7 @@ const MarketingPlan = () => {
             </a>
           </div>
         </div>
-        <div style={{ width: "13%", marginLeft: 120 }}>
+        <div style={{ width: "15%", marginLeft: 120 }}>
           <select onChange={handleYearChange}>
             <option disabled value="" selected>
               Select Year
@@ -149,6 +147,7 @@ const MarketingPlan = () => {
                           {data.thematic}{" "}
                           <i
                             class="fas fa-plus"
+                            style={{ cursor: "pointer", marginLeft: 10 }}
                             onClick={() => handleClick(data._id)}
                           ></i>
                         </div>
@@ -171,13 +170,18 @@ const MarketingPlan = () => {
                               to={`/edit-campaign/${data._id}`}
                               style={{ color: "white" }}
                             >
-                              Edit
+                              <button className="btn btn-primary btn-sm">
+                                Edit
+                              </button>
                             </Link>
-                            <a>
-                              <i
-                                class="fas fa-trash"
-                                onClick={() => handleDelete(data._id)}
-                              ></i>
+                            <a onClick={() => handleDelete(data._id)}>
+                              <button className="btn btn-danger btn-sm">
+                                Delete
+                                <i
+                                  class="fas fa-trash"
+                                  // style={{ color: "red" }}
+                                ></i>
+                              </button>
                             </a>
                           </div>
                         </div>

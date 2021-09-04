@@ -114,3 +114,10 @@ export function getUserCompany() {
 export function getSingleCompaign(data) {
   return api.get(`/campaign/get-campaign/${data}`, config);
 }
+export function getCompaignOfSingleCompany(data) {
+  return api.post(
+    `/campaign/get-all-campaigns-of-company`,
+    { ...data },
+    config
+  );
+}

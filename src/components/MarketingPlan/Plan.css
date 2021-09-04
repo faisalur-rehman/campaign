@@ -123,7 +123,7 @@
 .advertisment_click_box_detail {
   position: absolute;
   left: 0px;
-  background: gray;
+  background: lightseagreen;
   z-index: 9999;
   padding: 20px 10px;
   display: flex;
@@ -140,4 +140,10 @@
   display: flex;
   justify-content: space-between;
   gap: 10px 10px;
+}
+.advertisment {
+  background: lightgray;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 10px 0;
 }
