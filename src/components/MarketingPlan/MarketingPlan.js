@@ -14,7 +14,20 @@ const MarketingPlan = () => {
   const userCompany = useApi(api.getUserCompany);
   const marketing = useApi(api.marketingPlan);
   const deleteCompany = useApi(api.deleteCampaign);
-  const downloadFile = useApi(api.downloadExcel);
+  const bgColors = [
+    "#FFC1C1",
+    "#D5A9FF",
+    "#AEDFB9",
+    "#D0D0CD",
+    "#FFC1C1",
+    "#D5A9FF",
+    "#AEDFB9",
+    "#D0D0CD",
+    "#FFC1C1",
+    "#D5A9FF",
+    "#AEDFB9",
+    "#D0D0CD",
+  ];
   useEffect(() => {
     async function fetchData() {
       try {
@@ -139,7 +152,14 @@ const MarketingPlan = () => {
             {marketing.data &&
               marketing.data.data.map((plan, index) => (
                 <tr class="Employee_Leave_table_body">
-                  <td>{plan.month}</td>
+                  <td
+                    style={{
+                      backgroundColor: `${bgColors[index]}`,
+                      fontSize: "20px",
+                    }}
+                  >
+                    {plan.month}
+                  </td>
                   <td>
                     {plan.S1.map((data) => (
                       <div class="advertisment_click_box">

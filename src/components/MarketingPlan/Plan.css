@@ -42,7 +42,8 @@
   transition: background 0.3s;
   text-transform: capitalize;
   border: 1px solid black;
-  height: 75px;
+  height: 210px;
+  width: 250px;
 }
 
 .view_Employee_Leave_action {
@@ -140,6 +141,9 @@
   display: flex;
   justify-content: space-between;
   gap: 10px 10px;
+}
+.click_box_inner_btn a {
+  margin: 10px;
 }
 .advertisment {
   background: lightgray;
